@@ -4,7 +4,7 @@ require("./config/database");
 const express = require("express");
 const path = require("path");
 const logger = require("morgan");
-const debug = require("debug")("mern:server");
+const debug = require("debug")("fincademy:server");
 
 const usersRouter = require("./routes/api/usersRoutes");
 const coursesRouter = require("./routes/api/coursesRoutes");

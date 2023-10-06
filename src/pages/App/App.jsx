@@ -5,8 +5,8 @@ import { Route, Routes } from "react-router-dom";
 
 import NavBar from "../../components/NavBar/NavBar";
 
-const log = debug("mern:src:App");
-localStorage.debug = "mern:*";
+const log = debug("fincademy:src:App");
+localStorage.debug = "fincademy:*";
 
 log("Start app");
 

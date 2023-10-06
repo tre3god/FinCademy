@@ -7,6 +7,7 @@ const logger = require("morgan");
 const debug = require("debug")("mern:server");
 
 const usersRouter = require("./routes/api/usersRoutes");
+const coursesRouter = require("./routes/api/coursesRoutes");
 const checkTokenMiddleware = require("./config/checkToken");
 
 //* app
@@ -21,6 +22,7 @@ app.use(checkTokenMiddleware);
 
 //* routes
 app.use("/api/users", usersRouter);
+app.use("/api/courses", coursesRouter);
 
 //? Catch all routes
 app.get("/*", (req, res) => {

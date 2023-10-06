@@ -1,9 +1,8 @@
 import debug from "debug";
-import NewOrderPage from "../NewOrderPage/NewOrderPage";
-import AuthPage from "../AuthPage/AuthPage";
+
 import { useState } from "react";
 import { Route, Routes } from "react-router-dom";
-import OrderHistoryPage from "../OrderHistoryPage/OrderHistoryPage";
+
 import NavBar from "../../components/NavBar/NavBar";
 
 const log = debug("mern:src:App");
@@ -22,12 +21,20 @@ export default function App() {
 				<>
 					<NavBar user={user} setUser={updateUser} />
 					<Routes>
-						<Route path="/orders/new" element={<NewOrderPage />} />
-						<Route path="/orders" element={<OrderHistoryPage />} />
+						<Route path="/users/:userId" />
+						<Route path="/courses/:courseId/review" />
+						<Route path="/courses/:courseId/content" />
 					</Routes>
 				</>
 			) : (
-				<AuthPage setUser={updateUser} />
+				<>
+					<Routes>
+						<Route path="/" element={<AllCoursesPage />} />
+						<Route path="/:courseId" element={<CourseInfoPage />} />
+						<Route path="/login" element={<LoginPage />} />
+						<Route path="/signup" element={<SignupPage />} />
+					</Routes>
+				</>
 			)}
 		</main>
 	);

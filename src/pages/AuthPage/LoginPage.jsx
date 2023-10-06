@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { login } from "../../utilities/users-service";
+import { Link } from "react-router-dom";
 
 export default function LoginPage({setUser}) {
     const [credentials, setCredentials] = useState({
@@ -25,7 +26,7 @@ export default function LoginPage({setUser}) {
 
     return (
         <>
-        <h1>Log in here</h1>
+        <h1>Log in to your account</h1>
 		<div>
 			<div className="form-container">
 				<form autoComplete="off" onSubmit={handleSubmit}>
@@ -49,11 +50,13 @@ export default function LoginPage({setUser}) {
 						required
 					/>
                     <br></br>
+                    <p className="error-message">&nbsp;{error}</p>
+
 					<button type="submit">LOG IN</button>
 				</form>
 			</div>
-			<p className="error-message">&nbsp;{error}</p>
 		</div>
+        <div>Dont have an account? <Link to="/signup">Register</Link></div>
         </>
 	);
 }

@@ -1,7 +1,7 @@
 const User = require("../../models/User");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
-const debug = require("debug")("mern:controllers:usersCtrl");
+const debug = require("debug")("fincademy:controllers:usersCtrl");
 
 const createJWT = (user) => {
 	return jwt.sign({ user }, process.env.SECRET, {

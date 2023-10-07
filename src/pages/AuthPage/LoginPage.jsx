@@ -19,10 +19,12 @@ export default function LoginPage({setUser}) {
 		evt.preventDefault();
 		try {
 			const user = await login(credentials);
+			// console.log(user)
+
 			setUser(user);
 			
-			// testing
-			navigate(`/users/6520e9f51a82e99b9ce7bf7c`)
+			// navigate to user/:userId page (Student Profile)
+			navigate(`/users/${user._id}`)
 		} catch (error) {
 			setError("Log In Failed - Try Again");
 		}

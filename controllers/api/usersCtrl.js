@@ -5,7 +5,7 @@ const debug = require("debug")("fincademy:controllers:usersCtrl");
 
 const createJWT = (user) => {
 	return jwt.sign({ user }, process.env.SECRET, {
-		expiresIn: "5m",
+		expiresIn: "30m",
 	});
 };
 

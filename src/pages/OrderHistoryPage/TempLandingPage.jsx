@@ -1,11 +1,11 @@
 import { Button } from "react-bootstrap";
-import { checkToken } from "../../utilities/users-service";
-import debug from "debug";
+
+// import debug from "debug";
 import { useNavigate } from "react-router-dom";
 
-const log = debug("findcademy:pages:OrderHistoryPage");
+// const log = debug("findcademy:pages:OrderHistoryPage");
 
-export default function OrderHistoryPage() {
+export default function TempLandingPage() {
 	const navigate = useNavigate();
 
 	// const handleCheckToken = async () => {

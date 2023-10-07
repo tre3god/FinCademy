@@ -41,8 +41,8 @@ export default function App() {
 						<Route path="/" element={<OrderHistoryPage />} />
 						<Route path="/courses" />
 						<Route path="/courses/:courseId" />
-						<Route path="/login" element={<LoginPage />} />
-						<Route path="/signup" element={<SignupPage />} />
+						<Route path="/login" element={<LoginPage setUser={setUser}/>} />
+						<Route path="/signup" element={<SignupPage setUser={setUser}/>} />
 					</Routes>
 				</>
 			)}

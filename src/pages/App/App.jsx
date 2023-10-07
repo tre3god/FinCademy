@@ -4,6 +4,8 @@ import { useState } from "react";
 import { Route, Routes } from "react-router-dom";
 
 import NavBar from "../../components/NavBar/NavBar";
+import { getUser } from "../../utilities/users-service";
+import CreateReviewPage from "../CourseReviewPage/CreateReviewPage";
 
 const log = debug("fincademy:src:App");
 localStorage.debug = "fincademy:*";
@@ -11,7 +13,7 @@ localStorage.debug = "fincademy:*";
 log("Start app");
 
 export default function App() {
-	const [user, setUser] = useState(null);
+	const [user, setUser] = useState(getUser());
 
 	const updateUser = (user) => setUser(user);
 
@@ -22,7 +24,10 @@ export default function App() {
 					<NavBar user={user} setUser={updateUser} />
 					<Routes>
 						<Route path="/users/:userId" />
-						<Route path="/courses/:courseId/review" />
+						<Route
+							path="/courses/:courseId/review"
+							element={<CreateReviewPage />}
+						/>
 						<Route path="/courses/:courseId/content" />
 					</Routes>
 				</>

@@ -1,6 +1,6 @@
 const Course = require("../../models/Course");
 
-async function create(req, res) {
+async function createCourse(req, res) {
     const data = req.body;
     try {
         const newCourse = await Course.create(data);
@@ -25,5 +25,5 @@ const createReview = async (req, res) => {
 	}
 };
 
-module.exports = { createReview };
+module.exports = { createReview, createCourse };
 

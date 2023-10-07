@@ -1,6 +1,15 @@
 const mongoose = require("mongoose");
 const { Schema, model } = mongoose;
 
+const reviewSchema = new Schema(
+    {
+        rating: { type: Number, required: true, min: 1, max: 5 },
+        comments: { type: String, required: true },
+        user: { type: Schema.Types.ObjectId, ref: "User", required: true },
+    },
+    { timestamps: true },
+);
+
 const courseSchema = new Schema(
     {
         id: Number,
@@ -16,14 +25,6 @@ const courseSchema = new Schema(
         timestamps: true
     });
 
-const reviewSchema = new Schema(
-	{
-		rating: { type: Number, required: true, min: 1, max: 5 },
-		comments: { type: String, required: true },
-		user: { type: Schema.Types.ObjectId, ref: "User", required: true },
-	},
-	{ timestamps: true },
-);
 
 module.exports = model("Course", courseSchema);
 

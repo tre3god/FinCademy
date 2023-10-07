@@ -7,6 +7,7 @@ import CreateReviewPage from "../CourseReviewPage/CreateReviewPage";
 import LoginPage from "../AuthPage/LoginPage";
 import SignupPage from "../AuthPage/SignupPage";
 import OrderHistoryPage from "../OrderHistoryPage/OrderHistoryPage";
+import StudentProfile from "../StudentProfile/StudentProfile";
 
 const log = debug("fincademy:src:App");
 localStorage.debug = "fincademy:*";
@@ -27,7 +28,7 @@ export default function App() {
 						<Route path="/" element={<OrderHistoryPage />} />
 						<Route path="/courses" />
 						<Route path="/courses/:courseId" />
-						<Route path="/users/:userId" />
+						<Route path="/users/:userId" element={<StudentProfile />}/>
 						<Route
 							path="/courses/:courseId/review"
 							element={<CreateReviewPage />}

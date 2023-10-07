@@ -1,17 +1,20 @@
 const mongoose = require("mongoose");
-
 const { Schema, model } = mongoose;
 
 const courseSchema = new Schema(
-	{
-		name: { type: String, required: true },
-		shortDescription: { type: String, required: true },
-		content: { type: Schema.Types.ObjectId, ref: "Content", required: true },
-		price: { type: Number, required: true },
-		reviews: [reviewSchema],
-	},
-	{ timestamps: true },
-);
+    {
+        id: Number,
+        courseTitle: { type: String, required: true },
+        shortDescription: { type: String, required: true },
+        longDescription: String,
+        content: { type: Schema.Types.ObjectId, ref: "Content", required: true },
+        quiz: { type: Schema.Types.ObjectId, ref: 'Quiz' },
+        price: { type: Number, required: true },
+        reviews: [reviewSchema],
+        source: String
+    }, {
+        timestamps: true
+    });
 
 const reviewSchema = new Schema(
 	{
@@ -23,3 +26,4 @@ const reviewSchema = new Schema(
 );
 
 module.exports = model("Course", courseSchema);
+

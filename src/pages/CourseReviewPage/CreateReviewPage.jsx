@@ -1,7 +1,12 @@
+import { Rating } from "@mui/material";
+import { useState } from "react";
 import { Button, Form } from "react-bootstrap";
 
 export default function CreateReviewPage() {
 	const username = "Testing User";
+
+	const [rating, setRating] = useState(0);
+
 	return (
 		<>
 			<h1>CreateReviewPage</h1>
@@ -22,9 +27,13 @@ export default function CreateReviewPage() {
 				</Form.Group>
 				<Form.Group controlId="rating">
 					<Form.Label>Rating</Form.Label>
-					{[1, 2, 3, 4, 5].map((rating) => (
-						<Form.Check type="radio" inline key={rating} />
-					))}
+					<Rating
+						name="simple-controlled"
+						value={rating}
+						onChange={(_, newValue) => {
+							setRating(newValue);
+						}}
+					/>
 				</Form.Group>
 				<Button variant="primary" type="submit">
 					Submit

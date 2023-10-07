@@ -1,11 +1,12 @@
 import debug from "debug";
-
 import { useState } from "react";
 import { Route, Routes } from "react-router-dom";
-
 import NavBar from "../../components/NavBar/NavBar";
 import { getUser } from "../../utilities/users-service";
 import CreateReviewPage from "../CourseReviewPage/CreateReviewPage";
+import LoginPage from "../AuthPage/LoginPage";
+import SignupPage from "../AuthPage/SignupPage";
+import OrderHistoryPage from "../OrderHistoryPage/OrderHistoryPage";
 
 const log = debug("fincademy:src:App");
 localStorage.debug = "fincademy:*";
@@ -23,6 +24,9 @@ export default function App() {
 				<>
 					<NavBar user={user} setUser={updateUser} />
 					<Routes>
+						<Route path="/" element={<OrderHistoryPage />} />
+						<Route path="/courses" />
+						<Route path="/courses/:courseId" />
 						<Route path="/users/:userId" />
 						<Route
 							path="/courses/:courseId/review"
@@ -34,8 +38,9 @@ export default function App() {
 			) : (
 				<>
 					<Routes>
-						<Route path="/" element={<AllCoursesPage />} />
-						<Route path="/:courseId" element={<CourseInfoPage />} />
+						<Route path="/" element={<OrderHistoryPage />} />
+						<Route path="/courses" />
+						<Route path="/courses/:courseId" />
 						<Route path="/login" element={<LoginPage />} />
 						<Route path="/signup" element={<SignupPage />} />
 					</Routes>

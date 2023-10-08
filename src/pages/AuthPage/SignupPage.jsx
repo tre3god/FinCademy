@@ -1,8 +1,7 @@
 
 import { useState } from "react";
 import { signUp } from "../../utilities/users-service";
-
-
+import { useNavigate } from "react-router-dom";
 
 export default function SignupPage({setUser}) {
     const [formData, setFormData] = useState({
@@ -12,6 +11,8 @@ export default function SignupPage({setUser}) {
 		confirm: "",
 		error: "",
 	});
+    const navigate = useNavigate()
+
 
 	const handleChange = (evt) => {
         setFormData({
@@ -26,6 +27,10 @@ export default function SignupPage({setUser}) {
 		try {
 			const user = await signUp(formData);
 			setUser(user);
+
+            // navigate to user/:userId page (Student Profile)
+            navigate(`/users/${user._id}`)
+
 		} catch (error) {
 			setFormData({ error: "Sign up Failed - Try again" });
 		}

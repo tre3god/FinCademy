@@ -10,6 +10,15 @@ async function createCourse(req, res) {
     }
 }
 
+async function getAllCourses(req, res) {
+	try {
+		const allCourses = await Course.find();
+		res.status(200).json({ allCourses });
+	} catch (error) {
+		res.status(500).json({ error });
+	}
+}
+
 // const debug = require("debug")("fincademy:controllers:coursesCtrl");
 
 const createReview = async (req, res) => {
@@ -25,5 +34,5 @@ const createReview = async (req, res) => {
 	}
 };
 
-module.exports = { createReview, createCourse };
+module.exports = { createReview, createCourse, getAllCourses };
 

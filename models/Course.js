@@ -18,7 +18,8 @@ const courseSchema = new Schema(
         content: { type: Schema.Types.ObjectId, ref: "Content" },
         price: { type: Number, required: true },
         reviews: [reviewSchema],
-        source: String
+        source: String,
+        img: String
     }, {
         timestamps: true
     });

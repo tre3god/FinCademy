@@ -17,9 +17,9 @@ localStorage.debug = "fincademy:*";
 log("Start app");
 
 export default function App() {
-	const [user, setUser] = useState(getUser());
+  const [user, setUser] = useState(getUser());
 
-	const updateUser = (user) => setUser(user);
+  const updateUser = (user) => setUser(user);
 
 	return (
 		<>

@@ -6,6 +6,7 @@ export default function NavBar({ user, setUser }) {
 		logOut();
 		setUser(null);
 	};
+	const updateUser = (user) => setUser(user);
 	return (
 		<>
 			<nav>

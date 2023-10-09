@@ -1,4 +1,5 @@
 const Course = require("../../models/Course");
+const debug = require("debug")("fincademy:controllers:coursesCtrl");
 const debug = require("debug")("fincademy:controllers:reviewsCtrl");
 
 const createReview = async (req, res) => {
@@ -11,6 +12,7 @@ const createReview = async (req, res) => {
 
 		const course = await Course.findById(courseId);
 		debug(course);
+
 		course.reviews.push(newReview);
 		await course.save();
 		res.status(201).json({ course });

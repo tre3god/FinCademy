@@ -1,11 +1,13 @@
-import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+
+import { useEffect, useState } from "react"
+import { Link, useParams } from "react-router-dom"
+import { Button, Container, Row, Col, Spinner } from "react-bootstrap";
 import * as userService from "../../utilities/users-service";
 
 export default function StudentProfile() {
-	const [studentId, setStudentId] = useState(null);
-	const { userId } = useParams();
-	console.log("from params" + userId);
+    const [studentId, setStudentId] = useState(null)
+    const { userId } = useParams();
+    // console.log("from params" + userId)
 
 	useEffect(() => {
 		const fetchStudentDetails = async () => {
@@ -18,29 +20,47 @@ export default function StudentProfile() {
 		};
 		fetchStudentDetails();
 	}, [userId]);
+    // console.log(studentId)
 
-	console.log(studentId);
+    if (!studentId) {
+        return (
+          <Container className="mt-5">
+            <Row>
+              <Col>
+                <Spinner animation="border" role="status">
+                  <span className="sr-only"></span>
+                </Spinner>
+                <div>Loading...</div>
 
-	if (!studentId) {
-		return <h1>Loading...</h1>;
-	}
-
-	return (
-		<>
-			<h1>Student Profile Page</h1>
-			<h2>Email: {studentId.student ? studentId.student.email : "N/A"}</h2>
-			<h2>
-				Test Courses: {studentId.student ? studentId.student.courses : "N/A"}{" "}
-			</h2>
-			<h3>Below are your enrolled courses</h3>
-
-			{studentId.student.courses.map((course, index) => (
-				<>
-					<div key={index}>
-						<div>{course}</div>
-					</div>
-				</>
-			))}
-		</>
-	);
-}
+              </Col>
+            </Row>
+          </Container>
+        );
+      }
+    
+      return (
+        <Container className="mt-5">
+          <h1>Student Profile Page</h1>
+          <h2>Email: {studentId.student ? studentId.student.email : "N/A"}</h2>
+          <h3>Below are your enrolled courses</h3>
+          {studentId.student.courses.map((course, index) => (
+            <div key={index} className="mb-2">
+             <Row>
+                <Col sm={1}>{index + 1}.</Col>
+                <Col sm={6}>
+                  <Link to={`/courses/${course}`}>{course}</Link>
+                </Col>
+                <Col sm={3}>
+                  <Link to={`/courses/${course}/review`}>
+                    <Button variant="primary">Review</Button>
+                  </Link>
+                </Col>
+                <Col sm={2}>
+                  <Button variant="danger">Unsubscribe</Button>
+                </Col>
+              </Row>
+            </div>
+          ))}
+        </Container>
+      );
+    }

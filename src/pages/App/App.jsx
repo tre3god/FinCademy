@@ -11,6 +11,7 @@ import TempLandingPage from "../TempLandingPage/TempLandingPage";
 import CourseInfoPage from "../CoursesPage/CourseInfoPage";
 import AllCoursesPage from "../CoursesPage/AllCoursesPage";
 import CourseContentPage from "../CourseContentPage/CourseContentPage";
+import QuizPage from "../../pages/QuizPage/QuizPage";
 
 const log = debug("fincademy:src:App");
 localStorage.debug = "fincademy:*";
@@ -42,6 +43,7 @@ export default function App() {
                 path="/courses/:courseId/content"
                 element={<CourseContentPage />}
               />
+              <Route path="/quiz/:courseId" element={<QuizPage />} />
             </Routes>
           </>
         ) : (

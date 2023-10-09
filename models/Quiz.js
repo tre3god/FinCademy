@@ -4,18 +4,19 @@ const { Schema, model } = mongoose;
 
 const answerSchema = new Schema(
   {
-  text: { type: String, required: true },
-  isCorrect: { type: Boolean, required: true },
+    text: { type: String },
+    isCorrect: { type: Boolean },
   },
   {
-    timestamps: true
-});
+    timestamps: true,
+  }
+);
 
 const quizSchema = new Schema(
   {
-    question: { type: String, required: true },
+    question: { type: String },
     answers: [answerSchema],
-    course: { type: Schema.Types.ObjectId, ref: "Course", required: true },
+    course: { type: Schema.Types.ObjectId, ref: "Course" },
   },
   { timestamps: true }
 );

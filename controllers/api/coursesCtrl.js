@@ -29,4 +29,17 @@ async function getOneCourse(req, res) {
 	}
 }
 
-module.exports = { createCourse, getAllCourses, getOneCourse };
+async function getCourseContent(req, res) {
+	const { courseId } = req.params;
+	try {
+		const oneCourse = await Course.findById(courseId);
+		const data = { courseTitle: oneCourse.courseTitle,
+		content: oneCourse.content };
+		console.log(data);
+		res.status(200).json(data);
+	} catch (error) {
+		res.status(500).json({ error });
+	}
+}
+
+module.exports = { createCourse, getAllCourses, getOneCourse, getCourseContent };

@@ -12,6 +12,7 @@ import NavBar from "../../components/NavBar/NavBar";
 import AllCoursesPage from "../CoursesPage/AllCoursesPage";
 // import CourseContentPage from "../CourseContentPage/CourseContentPage";
 
+
 const log = debug("fincademy:src:App");
 localStorage.debug = "fincademy:*";
 

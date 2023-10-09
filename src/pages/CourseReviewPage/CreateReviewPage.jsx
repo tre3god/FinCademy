@@ -18,7 +18,7 @@ export default function CreateReviewPage() {
 		evt.preventDefault();
 		log(evt.target.elements);
 		await addReview(evt.target.elements, courseId);
-		navigate("/courses/2");
+		// navigate("/courses/2");
 	};
 
 	return (

@@ -67,4 +67,18 @@ const checkToken = async () => {
   return date;
 };
 
-export { signUp, getUser, getToken, logOut, login, checkToken };
+const findStudentCourses = async () => {
+  const data = await userApi.findStudentCourses();
+  const studentCourses = data.courses;
+  return studentCourses;
+};
+
+export {
+  signUp,
+  getUser,
+  getToken,
+  logOut,
+  login,
+  checkToken,
+  findStudentCourses,
+};

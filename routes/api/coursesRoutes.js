@@ -1,7 +1,6 @@
 const express = require("express");
 const router = express.Router();
 const coursesCtrl = require("../../controllers/api/coursesCtrl");
-const contentCtrl = require("../../controllers/api/contentCtrl");
 
 router.post("/", coursesCtrl.createCourse);
 router.get("/", coursesCtrl.getAllCourses);

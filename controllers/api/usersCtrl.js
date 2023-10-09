@@ -46,8 +46,15 @@ const checkToken = (req, res) => {
 
 const getOne = async (req, res) => {
   const { userId } = req.params;
-  const student = await User.findById(userId);
-  res.json({ student });
+  try {
+    const student = await User.findById(userId);
+    if (!student) {
+      return res.status(404).json({ error: "User not found" });
+    }
+    res.json({ student });
+  } catch (error) {
+    res.status(500).json({ error: "Internal Server Error" });
+  }
 };
 
 module.exports = { create, login, checkToken, getOne };

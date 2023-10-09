@@ -10,7 +10,7 @@ export default function CourseContentPage() {
     const fetchContent = async () => {
       try {
         const data = await courseService.getContent(courseId);
-        setContent(data);
+        setContent(data.name);
       } catch (error) {
         console.log(error);
       }

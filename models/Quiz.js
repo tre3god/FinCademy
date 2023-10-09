@@ -14,13 +14,4 @@ const quizSchema = new Schema(
   { timestamps: true }
 );
 
-const contentSchema = new Schema(
-  {
-    content: { type: String, required: true },
-    quiz: [quizSchema],
-    course: { type: Schema.Types.ObjectId, ref: "Course", required: true },
-  },
-  { timestamps: true }
-);
-
-module.exports = model("Content", contentSchema);
+module.exports = model("Quiz", quizSchema);

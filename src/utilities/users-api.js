@@ -1,4 +1,5 @@
 const BASE_URL = "/api/users";
+import sendRequest from "./send-request";
 
 const postUserData = async (userData) => {
   const response = await fetch(BASE_URL, {
@@ -45,14 +46,20 @@ const checkToken = async () => {
   }
 };
 
-const findStudentCourse = async () => {
-  const response = await fetch(`${BASE_URL}/${user.Id}`, {
-    method: "POST",
+const findStudentCourses = async (userId) => {
+  const token = localStorage.getItem("token");
+
+  const response = await fetch(`${BASE_URL}/${userId}`, {
+    method: "GET",
     headers: {
-      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
     },
-    body: JSON.stringify(),
   });
+  if (response.ok) {
+    return await response.json();
+  } else {
+    throw new Error();
+  }
 };
 
-export { postUserData, postUserLogin, checkToken, findStudentCourse };
+export { postUserData, postUserLogin, checkToken, findStudentCourses };

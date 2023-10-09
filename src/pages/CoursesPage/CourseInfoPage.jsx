@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import * as courseService from "../../utilities/course-service";
 import { Button, Stack } from "react-bootstrap";
 import debug from "debug";
+import ReviewsHistory from "../../components/Reviews/ReviewsHistory";
 
 const log = debug("fincademy:CoursesPage:CourseInfoPage");
 
@@ -23,6 +24,11 @@ export default function CourseInfoPage() {
 		};
 		fetchContent();
 	}, [courseId]);
+
+	const handleEnroll = () => {
+		//* Push the course into the Student Model
+	};
+
 	return (
 		<>
 			<h1>{course.courseTitle}</h1>
@@ -32,7 +38,10 @@ export default function CourseInfoPage() {
 				</div>
 				<div className="p-2">Course Price: {course.price}</div>
 				<div className="p-2">Course Reviews:</div>
-				<Button className="col-md-5 mx-auto">Enroll</Button>
+				<ReviewsHistory reviews={course.reviews} />
+				<Button className="col-md-5 mx-auto" onClick={handleEnroll}>
+					Enroll
+				</Button>
 			</Stack>
 		</>
 	);

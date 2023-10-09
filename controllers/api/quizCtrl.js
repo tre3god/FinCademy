@@ -1,16 +1,16 @@
 const Course = require("../../models/Course");
-const Content = require("../../models/Content");
+const Quiz = require("../../models/Quiz");
 
-async function showContent(req, res) {
+async function showQuiz(req, res) {
   try {
     const course = await Course.findById(req.params.courseId);
-    const content = await Content.find({ course: course._id });
-    res.status(200).json(content);
+    const quiz = await Quiz.find({ course: course._id });
+    res.status(200).json(quiz);
   } catch (error) {
     res.status(500).json({ error });
   }
 }
 
 module.exports = {
-  showContent,
+  showQuiz,
 };

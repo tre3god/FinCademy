@@ -29,19 +29,17 @@ async function getOneCourse(req, res) {
 	}
 }
 
-// const debug = require("debug")("fincademy:controllers:coursesCtrl");
-
-const createReview = async (req, res) => {
+async function getCourseContent(req, res) {
+	const { courseId } = req.params;
 	try {
-		const { courseId } = req.params;
-		const course = await Course.findById(courseId);
-		const newReview = req.body;
-		course.reviews.push(newReview);
-		await course.save();
-		res.status(201).json({ course });
+		const oneCourse = await Course.findById(courseId);
+		const data = { courseTitle: oneCourse.courseTitle,
+		content: oneCourse.content };
+		console.log(data);
+		res.status(200).json(data);
 	} catch (error) {
 		res.status(500).json({ error });
 	}
-};
+}
 
-module.exports = { createReview, createCourse, getAllCourses, getOneCourse };
+module.exports = { createCourse, getAllCourses, getOneCourse, getCourseContent };

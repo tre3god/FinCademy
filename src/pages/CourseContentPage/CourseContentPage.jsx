@@ -13,10 +13,8 @@ export default function CourseInfoPage() {
   useEffect(() => {
     const fetchContent = async () => {
       try {
-        const data = await courseService.getOneCourse(courseId);
-        const { oneCourse } = data;
-        setCourse(oneCourse);
-        log(oneCourse);
+        const data = await courseService.getCourseContent(courseId);
+        setCourse(data);
       } catch (error) {
         console.log(error);
       }
@@ -26,10 +24,12 @@ export default function CourseInfoPage() {
 
   return (
     <>
+      <br />
       <h1>{course.courseTitle}</h1>
       <br />
       <div className="p-2">{course.content}</div>
-      <Link to={`/courses/${courseId}/quiz`}>
+      <br />
+      <Link to={`/quiz/${courseId}`}>
         <Button className="col-md-5 mx-auto">Take the quiz now!</Button>
       </Link>
     </>

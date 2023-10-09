@@ -23,6 +23,51 @@ export default function App() {
 
   const updateUser = (user) => setUser(user);
 
+<<<<<<< HEAD
+  return (
+    <>
+      <h1>FinCademy</h1>
+      <main className="App">
+        {user ? (
+          <>
+            <NavBar user={user} setUser={updateUser} />
+            <Routes>
+              <Route path="/" element={<TempLandingPage />} />
+              <Route path="/courses" element={<AllCoursesPage />} />
+              <Route path="/courses/:courseId" element={<CourseInfoPage />} />
+              <Route path="/users/:userId" element={<StudentProfile />} />
+              <Route
+                path="/courses/:courseId/review"
+                element={<CreateReviewPage />}
+              />
+              <Route
+                path="/courses/:courseId/content"
+                element={<CourseContentPage />}
+              />
+              <Route path="/quiz/:courseId" element={<QuizPage />} />
+            </Routes>
+          </>
+        ) : (
+          <>
+            <Routes>
+              <Route path="/" element={<TempLandingPage />} />
+              <Route path="/courses" element={<AllCoursesPage />} />
+              <Route path="/courses/:courseId" element={<CourseInfoPage />} />
+              <Route
+                path="/login"
+                element={<LoginPage setUser={updateUser} />}
+              />
+              <Route
+                path="/signup"
+                element={<SignupPage setUser={updateUser} />}
+              />
+            </Routes>
+          </>
+        )}
+      </main>
+    </>
+  );
+=======
 	return (
 		<>
 		<main className="App">
@@ -58,4 +103,5 @@ export default function App() {
 		</main>
 		</>
 	);
+>>>>>>> main
 }

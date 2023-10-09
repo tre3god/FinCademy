@@ -38,7 +38,7 @@ export default function NavBar({ user, setUser }) {
 				<Navbar expand="lg" className="bg-body-tertiary">
 					<Container>
 						<img src="https://i.imgur.com/OZTTASE.png" width="50" height="50" />
-						<Navbar.Brand href="/">FinCadamy</Navbar.Brand>
+						<Navbar.Brand href="/">FinCademy</Navbar.Brand>
 						<Navbar.Toggle aria-controls="basic-navbar-nav" />
 						<Navbar.Collapse id="basic-navbar-nav">
 							<Nav className="me-auto">

@@ -15,10 +15,10 @@ export default function TempLandingPage() {
 
 	return (
 		<>
-			<h1>Landing Page</h1>
 			{/* <Button onClick={handleCheckToken}>Verify Login</Button> */}
 			<Button onClick={() => navigate("/login")}>Login Placeholder</Button>
 			<Button onClick={() => navigate("/signup")}>Signup Placeholder</Button>
+			<div></div>
 		</>
 	);
 }

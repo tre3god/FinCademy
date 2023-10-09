@@ -5,6 +5,6 @@ export function getOneCourse(courseId) {
 	return sendRequest(`${BASE_URL}/${courseId}`);
 }
 
-export function enrollCourse(courseId) {
-	return sendRequest();
-}
+// export function enrollCourse(courseId) {
+// 	return sendRequest();
+// }

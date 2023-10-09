@@ -5,4 +5,4 @@ export async function getOneCourse(courseId) {
 	return content;
 }
 
-export async function enrollCourse(courseId) {}
+// export async function enrollCourse(courseId) {}

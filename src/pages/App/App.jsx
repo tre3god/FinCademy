@@ -7,7 +7,7 @@ import CreateReviewPage from "../CourseReviewPage/CreateReviewPage";
 import LoginPage from "../AuthPage/LoginPage";
 import SignupPage from "../AuthPage/SignupPage";
 import StudentProfile from "../StudentProfile/StudentProfile";
-import TempLandingPage from "../OrderHistoryPage/TempLandingPage";
+import TempLandingPage from "../TempLandingPage/TempLandingPage";
 import AllCourses from "../CoursesPage/AllCoursesPage";
 import CourseInfoPage from "../CoursesPage/CourseInfoPage";
 import RBSNavBar from "../../components/NavBar/RBSNavBar";
@@ -25,7 +25,6 @@ export default function App() {
 
 	return (
 		<>
-		<h1>FinCademy</h1>
 		<main className="App">
 			<RBSNavBar user={user} setUser={updateUser} />
 			{user ? (

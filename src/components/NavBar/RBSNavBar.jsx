@@ -12,18 +12,19 @@ export default function RBSNavBar({user, setUser}) {
 		setUser(null);
 	};
 
-    const updateUser = (user) => setUser(user);
+    // const updateUser = (user) => setUser(user);
     return (
         <>
         {user ? (
             <Navbar expand="lg" className="bg-body-tertiary">
                 <Container>
+                    <img src="https://i.imgur.com/OZTTASE.png" width="50" height="50" />
                     <Navbar.Brand href="/">FinCadamy</Navbar.Brand>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="me-auto">
                         <NavDropdown title="Your Account" id="basic-nav-dropdown">
-                            <NavDropdown.Item href="/users/${user._id}">Settings</NavDropdown.Item>
+                            <NavDropdown.Item href={`/users/${user.id}`}>Profile</NavDropdown.Item>
                             <NavDropdown.Divider />
                             <NavDropdown.Item href="/" onClick={handleLogout}>Sign Out</NavDropdown.Item>
                         </NavDropdown>
@@ -40,7 +41,8 @@ export default function RBSNavBar({user, setUser}) {
                 <Navbar.Collapse id="basic-navbar-nav">
                 <Nav className="me-auto">
                     <Nav.Link href="/courses">Courses</Nav.Link>
-                    <Nav.Link href="#link">Sign Up</Nav.Link>
+                    <Nav.Link href="/signup">Sign Up</Nav.Link>
+                    <Nav.Link href="/login">Login</Nav.Link>
                 </Nav>
                 </Navbar.Collapse>
             </Container>

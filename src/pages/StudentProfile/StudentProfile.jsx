@@ -22,6 +22,21 @@ export default function StudentProfile() {
 	}, [userId]);
     // console.log(studentId)
 
+    const handleUnsub = async (event) => {
+      const courseId = event.currentTarget.getAttribute("course");
+      console.log("click unsub " + courseId);
+
+      try {
+        const data = await userService.delCourse(userId, courseId);
+        console.log("Unsubscribe response:", data); // Add this line
+
+        setStudentId(data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    
+
     if (!studentId) {
         return (
           <Container className="mt-5">
@@ -56,7 +71,7 @@ export default function StudentProfile() {
                   </Link>
                 </Col>
                 <Col sm={2}>
-                  <Button variant="danger">Unsubscribe</Button>
+                  <Button variant="danger" onClick={handleUnsub} course={course}>Unsubscribe</Button>
                 </Col>
               </Row>
             </div>

@@ -1,3 +1,4 @@
+
 import { useEffect, useState } from "react"
 import { Link, useParams } from "react-router-dom"
 import { Button, Container, Row, Col, Spinner } from "react-bootstrap";
@@ -8,19 +9,17 @@ export default function StudentProfile() {
     const { userId } = useParams();
     // console.log("from params" + userId)
 
-    useEffect(() => {
-        const fetchStudentDetails = async () => {
-          try {
-            const data = await userService.findStudentCourses(userId);
-            setStudentId(data);
-            
-          } catch (error) { 
-            console.log(error);
-          }
-        };
-        fetchStudentDetails();
-      }, [userId]);
-
+	useEffect(() => {
+		const fetchStudentDetails = async () => {
+			try {
+				const data = await userService.findStudentCourses(userId);
+				setStudentId(data);
+			} catch (error) {
+				console.log(error);
+			}
+		};
+		fetchStudentDetails();
+	}, [userId]);
     // console.log(studentId)
 
     if (!studentId) {
@@ -46,13 +45,17 @@ export default function StudentProfile() {
           <h3>Below are your enrolled courses</h3>
           {studentId.student.courses.map((course, index) => (
             <div key={index} className="mb-2">
-              <Row>
+             <Row>
                 <Col sm={1}>{index + 1}.</Col>
-                <Col sm={8}>
-                    <Link to={`/courses/${course}`}>{course}</Link>
-                    
+                <Col sm={6}>
+                  <Link to={`/courses/${course}`}>{course}</Link>
                 </Col>
                 <Col sm={3}>
+                  <Link to={`/courses/${course}/review`}>
+                    <Button variant="primary">Review</Button>
+                  </Link>
+                </Col>
+                <Col sm={2}>
                   <Button variant="danger">Unsubscribe</Button>
                 </Col>
               </Row>

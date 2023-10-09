@@ -8,7 +8,3 @@ export function getOneCourse(courseId) {
 export function getCourseContent(courseId) {
 	return sendRequest(`${BASE_URL}/${courseId}/content`);
 }
-
-// export function enrollCourse(courseId) {
-// 	return sendRequest();
-// }

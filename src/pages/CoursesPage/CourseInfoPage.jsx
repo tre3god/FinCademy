@@ -26,8 +26,9 @@ export default function CourseInfoPage() {
 		fetchContent();
 	}, [courseId]);
 
-	const handleEnroll = () => {
+	const handleEnroll = async () => {
 		//* Push the course into the Student Model
+		// await
 	};
 
 	return (
@@ -42,11 +43,12 @@ export default function CourseInfoPage() {
 				{course.reviews?.map((review) => (
 					<ReviewsHistory key={review._id} review={review} />
 				))}
-				<Button className="col-md-5 mx-auto"
-				onClick={() => {
-					handleEnroll();
-					navigate(`/courses/${course._id}/content`);
-				}}>
+				<Button
+					className="col-md-5 mx-auto"
+					onClick={() => {
+						handleEnroll();
+						navigate(`/courses/${course._id}/content`);
+					}}>
 					Enroll
 				</Button>
 			</Stack>

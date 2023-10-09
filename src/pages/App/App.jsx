@@ -1,7 +1,7 @@
 import debug from "debug";
 import { useState } from "react";
 import { Route, Routes } from "react-router-dom";
-import NavBar from "../../components/NavBar/NavBar";
+// import NavBar from "../../components/NavBar/NavBar";
 import { getUser } from "../../utilities/users-service";
 import CreateReviewPage from "../CourseReviewPage/CreateReviewPage";
 import LoginPage from "../AuthPage/LoginPage";
@@ -9,6 +9,7 @@ import SignupPage from "../AuthPage/SignupPage";
 import StudentProfile from "../StudentProfile/StudentProfile";
 import TempLandingPage from "../OrderHistoryPage/TempLandingPage";
 import AllCourses from "../../components/AllCourses/AllCourses";
+import RBSNavBar from "../../components/NavBar/RBSNavBar";
 
 const log = debug("fincademy:src:App");
 localStorage.debug = "fincademy:*";
@@ -22,9 +23,9 @@ export default function App() {
 
 	return (
 		<main className="App">
+			<RBSNavBar user={user} setUser={updateUser} />
 			{user ? (
 				<>
-					<NavBar user={user} setUser={updateUser} />
 					<Routes>
 						<Route path="/" element={<TempLandingPage />} />
 						<Route path="/courses" element={<AllCourses />} />

@@ -8,9 +8,9 @@ import SignupPage from "../AuthPage/SignupPage";
 import StudentProfile from "../StudentProfile/StudentProfile";
 import TempLandingPage from "../TempLandingPage/TempLandingPage";
 import CourseInfoPage from "../CoursesPage/CourseInfoPage";
-import RBSNavBar from "../../components/NavBar/RBSNavBar";
+import NavBar from "../../components/NavBar/NavBar";
 import AllCoursesPage from "../CoursesPage/AllCoursesPage";
-import CourseContentPage from "../CourseContentPage/CourseContentPage";
+// import CourseContentPage from "../CourseContentPage/CourseContentPage";
 
 const log = debug("fincademy:src:App");
 localStorage.debug = "fincademy:*";
@@ -25,12 +25,12 @@ export default function App() {
 	return (
 		<>
 		<main className="App">
-			<RBSNavBar user={user} setUser={updateUser} />
+			<NavBar user={user} setUser={updateUser} />
 			{user ? (
 				<>
 					<Routes>
 						<Route path="/" element={<TempLandingPage />} />
-						<Route path="/courses" element={<AllCourses />} />
+						<Route path="/courses" element={<AllCoursesPage />} />
 						<Route path="/courses/:courseId" element={<CourseInfoPage />} />
 						<Route path="/users/:userId" element={<StudentProfile />} />
 						<Route
@@ -44,7 +44,7 @@ export default function App() {
 				<>
 					<Routes>
 						<Route path="/" element={<TempLandingPage />} />
-						<Route path="/courses" element={<AllCourses />} />
+						<Route path="/courses" element={<AllCoursesPage />} />
 						<Route path="/courses/:courseId" element={<CourseInfoPage />} />
 						<Route path="/login" element={<LoginPage setUser={updateUser} />} />
 						<Route

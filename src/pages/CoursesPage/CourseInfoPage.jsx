@@ -38,7 +38,9 @@ export default function CourseInfoPage() {
 				</div>
 				<div className="p-2">Course Price: {course.price}</div>
 				<div className="p-2">Course Reviews:</div>
-				<ReviewsHistory reviews={course.reviews} />
+				{course.reviews?.map((review) => (
+					<ReviewsHistory key={review._id} review={review} />
+				))}
 				<Button className="col-md-5 mx-auto" onClick={handleEnroll}>
 					Enroll
 				</Button>

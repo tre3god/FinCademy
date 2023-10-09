@@ -1,10 +1,16 @@
+import { ListGroup } from "react-bootstrap";
 import debug from "debug";
+import { Rating } from "@mui/material";
 const log = debug("fincademy:components:ReviewsHistory");
 
-export default function ReviewsHistory({ reviews }) {
+export default function ReviewsHistory({ review }) {
 	return (
-		<>
-			<h1>Review History</h1>
-		</>
+		<ListGroup>
+			<ListGroup.Item>{review.user}</ListGroup.Item>
+			<ListGroup.Item>{review.comments}</ListGroup.Item>
+			<ListGroup.Item>
+				<Rating name="rating" value={review.rating} readOnly />
+			</ListGroup.Item>
+		</ListGroup>
 	);
 }

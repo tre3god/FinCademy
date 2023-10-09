@@ -1,4 +1,5 @@
 const Course = require("../../models/Course");
+const debug = require("debug")("fincademy:controllers:coursesCtrl");
 
 async function createCourse(req, res) {
 	const data = req.body;
@@ -23,6 +24,7 @@ async function getOneCourse(req, res) {
 	const { courseId } = req.params;
 	try {
 		const oneCourse = await Course.findById(courseId);
+		debug(oneCourse);
 		res.status(200).json({ oneCourse });
 	} catch (error) {
 		res.status(500).json({ error });
@@ -33,8 +35,10 @@ async function getCourseContent(req, res) {
 	const { courseId } = req.params;
 	try {
 		const oneCourse = await Course.findById(courseId);
-		const data = { courseTitle: oneCourse.courseTitle,
-		content: oneCourse.content };
+		const data = {
+			courseTitle: oneCourse.courseTitle,
+			content: oneCourse.content,
+		};
 		console.log(data);
 		res.status(200).json(data);
 	} catch (error) {
@@ -42,4 +46,9 @@ async function getCourseContent(req, res) {
 	}
 }
 
-module.exports = { createCourse, getAllCourses, getOneCourse, getCourseContent };
+module.exports = {
+	createCourse,
+	getAllCourses,
+	getOneCourse,
+	getCourseContent,
+};

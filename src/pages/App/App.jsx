@@ -7,8 +7,10 @@ import CreateReviewPage from "../CourseReviewPage/CreateReviewPage";
 import LoginPage from "../AuthPage/LoginPage";
 import SignupPage from "../AuthPage/SignupPage";
 import StudentProfile from "../StudentProfile/StudentProfile";
-import TempLandingPage from "../TempLandingPage/TempLandingPage";
-import AllCourses from "../../components/AllCourses/AllCourses";
+import TempLandingPage from "../OrderHistoryPage/TempLandingPage";
+import AllCourses from "../CoursesPage/AllCoursesPage";
+import CourseInfoPage from "../CoursesPage/CourseInfoPage";
+
 
 const log = debug("fincademy:src:App");
 localStorage.debug = "fincademy:*";
@@ -30,7 +32,7 @@ export default function App() {
 					<Routes>
 						<Route path="/" element={<TempLandingPage />} />
 						<Route path="/courses" element={<AllCourses />} />
-						<Route path="/courses/:courseId" />
+						<Route path="/courses/:courseId" element={<CourseInfoPage />} />
 						<Route path="/users/:userId" element={<StudentProfile />} />
 						<Route
 							path="/courses/:courseId/review"
@@ -44,7 +46,7 @@ export default function App() {
 					<Routes>
 						<Route path="/" element={<TempLandingPage />} />
 						<Route path="/courses" element={<AllCourses />} />
-						<Route path="/courses/:courseId" />
+						<Route path="/courses/:courseId" element={<CourseInfoPage />} />
 						<Route path="/login" element={<LoginPage setUser={updateUser} />} />
 						<Route
 							path="/signup"

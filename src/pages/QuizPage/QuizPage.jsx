@@ -4,8 +4,8 @@ import { Button } from "react-bootstrap";
 import * as quizService from "../../utilities/quiz-service";
 
 export default function QuizPage() {
-  const [quizzes, setQuizzes] = useState([]);
-  const [index, setIndex] = useState(0);
+  const [quiz, setQuiz] = useState([]);
+  const [idx, setIdx] = useState(0);
   const [score, setScore] = useState(0);
   const [showScore, setShowScore] = useState(false);
   const { courseId } = useParams();
@@ -14,7 +14,7 @@ export default function QuizPage() {
     const fetchQuiz = async () => {
       try {
         const data = await quizService.getQuiz(courseId);
-        setQuizzes(data);
+        setQuiz(data);
       } catch (error) {
         console.log(error);
       }
@@ -22,16 +22,16 @@ export default function QuizPage() {
     fetchQuiz();
   }, [courseId]);
 
-  // Quiz referenced from https://github.com/chrisblakely01/quiz-app
+  // Quiz adapted from https://github.com/chrisblakely01/quiz-app
 
-  const handleAnswerOptionClick = (isCorrect) => {
-    if (isCorrect) {
+  const handleAnswerOptionClick = (index) => {
+    if (index === quiz[idx].isCorrect) {
       setScore(score + 1);
     }
 
-    const nextQuestion = index + 1;
-    if (nextQuestion < quizzes.length) {
-      setIndex(nextQuestion);
+    const nextIdx = idx + 1;
+    if (nextIdx < quiz.length) {
+      setIdx(nextIdx);
     } else {
       setShowScore(true);
     }
@@ -41,24 +41,28 @@ export default function QuizPage() {
     <div>
       {showScore ? (
         <div>
-          You scored {score} out of {quizzes.length}
+          You scored {score} out of {quiz.length}
         </div>
       ) : (
         <>
           <div>
             <div>
-              <span>Question {index + 1}</span>/{quizzes.length}
+              <span>Question {idx + 1}</span>/{quiz.length}
             </div>
-            <div>{quizzes[index].question}</div>
+            <br />
+            <div>{quiz[idx]?.question}</div>
           </div>
+          <br />
           <div>
-            {quizzes[index].answers.map((answer) => (
+            {quiz[idx]?.answers.map((answer, index) => (
+              <>
               <Button
                 key={answer._id}
-                onClick={() => handleAnswerOptionClick(answer.isCorrect)}
+                onClick={() => handleAnswerOptionClick(index)}
               >
-                {answer.text}
-              </Button>
+                {answer}
+              </Button><br />
+              </>
             ))}
           </div>
         </>

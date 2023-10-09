@@ -8,7 +8,9 @@ import LoginPage from "../AuthPage/LoginPage";
 import SignupPage from "../AuthPage/SignupPage";
 import StudentProfile from "../StudentProfile/StudentProfile";
 import TempLandingPage from "../OrderHistoryPage/TempLandingPage";
-import AllCourses from "../../components/AllCourses/AllCourses";
+import AllCourses from "../CoursesPage/AllCoursesPage";
+import CourseInfoPage from "../CoursesPage/CourseInfoPage";
+
 
 const log = debug("fincademy:src:App");
 localStorage.debug = "fincademy:*";
@@ -21,6 +23,8 @@ export default function App() {
 	const updateUser = (user) => setUser(user);
 
 	return (
+		<>
+		<h1>FinCademy</h1>
 		<main className="App">
 			{user ? (
 				<>
@@ -28,7 +32,7 @@ export default function App() {
 					<Routes>
 						<Route path="/" element={<TempLandingPage />} />
 						<Route path="/courses" element={<AllCourses />} />
-						<Route path="/courses/:courseId" />
+						<Route path="/courses/:courseId" element={<CourseInfoPage />} />
 						<Route path="/users/:userId" element={<StudentProfile />} />
 						<Route
 							path="/courses/:courseId/review"
@@ -42,7 +46,7 @@ export default function App() {
 					<Routes>
 						<Route path="/" element={<TempLandingPage />} />
 						<Route path="/courses" element={<AllCourses />} />
-						<Route path="/courses/:courseId" />
+						<Route path="/courses/:courseId" element={<CourseInfoPage />} />
 						<Route path="/login" element={<LoginPage setUser={updateUser} />} />
 						<Route
 							path="/signup"
@@ -52,5 +56,6 @@ export default function App() {
 				</>
 			)}
 		</main>
+		</>
 	);
 }

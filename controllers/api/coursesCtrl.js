@@ -23,8 +23,11 @@ async function getAllCourses(req, res) {
 async function getOneCourse(req, res) {
 	const { courseId } = req.params;
 	try {
-		const oneCourse = await Course.findById(courseId);
-		debug(oneCourse);
+		const oneCourse = await Course.findById(courseId).populate({
+			path: "reviews.user",
+			model: "User",
+			select: "name",
+		});
 		res.status(200).json({ oneCourse });
 	} catch (error) {
 		res.status(500).json({ error });

@@ -4,7 +4,7 @@ import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import { logOut } from "../../utilities/users-service";
 
-export default function RBSNavBar({ user, setUser }) {
+export default function NavBar({ user, setUser }) {
 	const handleLogout = () => {
 		logOut();
 		setUser(null);

@@ -49,16 +49,20 @@ export default function QuizPage() {
             <div>
               <span>Question {index + 1}</span>/{quiz.length}
             </div>
+            <br />
             <div>{quiz[index]?.question}</div>
           </div>
+          <br />
           <div>
             {quiz[index]?.answers.map((answer) => (
+              <>
               <Button
                 key={answer._id}
                 onClick={() => handleAnswerOptionClick(answer.isCorrect)}
               >
                 {answer.text}
-              </Button>
+              </Button><br />
+              </>
             ))}
           </div>
         </>

@@ -9,7 +9,7 @@ const log = debug("fincademy:CreateReviewPage");
 
 export default function CreateReviewPage() {
 	const username = "Testing User";
-	const courseId = "12345";
+	const courseId = "6522df1d2bddd131ff41d161";
 
 	const [rating, setRating] = useState(0);
 	const navigate = useNavigate();

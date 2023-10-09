@@ -4,8 +4,6 @@ const coursesCtrl = require("../../controllers/api/coursesCtrl");
 
 router.post("/", coursesCtrl.createCourse);
 router.get("/", coursesCtrl.getAllCourses);
-router.post("/:courseId", coursesCtrl.createReview);
-router.get("/:courseId/content", contentCtrl.showContent);
 router.get("/:courseId", coursesCtrl.getOneCourse);
 
 module.exports = router;

@@ -2,24 +2,23 @@ const mongoose = require("mongoose");
 
 const { Schema, model } = mongoose;
 
-// const answerSchema = new Schema(
-// 	{
-// 		text: { type: String },
-// 		isCorrect: { type: Boolean },
-// 	},
-// 	{
-// 		timestamps: true,
-// 	},
-// );
-
 const quizSchema = new Schema(
 	{
-		question: { type: String },
-		answers: [{ type: String }], //restrict the length,
+		question: { type: String, required: true },
+		answers: { type:[{
+			type: String,
+			required: true,
+		}],
+		validate: [arrayLimit]
+	},
 		isCorrect: { type: Number, min: 0, max: 3, required: true },
 		course: { type: Schema.Types.ObjectId, ref: "Course" },
 	},
 	{ timestamps: true },
 );
+
+function arrayLimit(val) {
+	return val.length <= 4;
+}
 
 module.exports = model("Quiz", quizSchema);

@@ -5,7 +5,7 @@ import * as quizService from "../../utilities/quiz-service";
 
 export default function QuizPage() {
   const [quiz, setQuiz] = useState([]);
-  const [index, setIndex] = useState(0);
+  const [idx, setIdx] = useState(0);
   const [score, setScore] = useState(0);
   const [showScore, setShowScore] = useState(false);
   const { courseId } = useParams();
@@ -22,16 +22,16 @@ export default function QuizPage() {
     fetchQuiz();
   }, [courseId]);
 
-  // Quiz referenced from https://github.com/chrisblakely01/quiz-app
+  // Quiz adapted from https://github.com/chrisblakely01/quiz-app
 
-  const handleAnswerOptionClick = (isCorrect) => {
-    if (isCorrect) {
+  const handleAnswerOptionClick = (index) => {
+    if (index === quiz[idx].isCorrect) {
       setScore(score + 1);
     }
 
-    const nextIndex = index + 1;
-    if (nextIndex < quiz.length) {
-      setIndex(nextIndex);
+    const nextIdx = idx + 1;
+    if (nextIdx < quiz.length) {
+      setIdx(nextIdx);
     } else {
       setShowScore(true);
     }
@@ -47,20 +47,20 @@ export default function QuizPage() {
         <>
           <div>
             <div>
-              <span>Question {index + 1}</span>/{quiz.length}
+              <span>Question {idx + 1}</span>/{quiz.length}
             </div>
             <br />
-            <div>{quiz[index]?.question}</div>
+            <div>{quiz[idx]?.question}</div>
           </div>
           <br />
           <div>
-            {quiz[index]?.answers.map((answer) => (
+            {quiz[idx]?.answers.map((answer, index) => (
               <>
               <Button
                 key={answer._id}
-                onClick={() => handleAnswerOptionClick(answer.isCorrect)}
+                onClick={() => handleAnswerOptionClick(index)}
               >
-                {answer.text}
+                {answer}
               </Button><br />
               </>
             ))}

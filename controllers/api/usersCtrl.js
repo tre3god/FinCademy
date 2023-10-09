@@ -57,4 +57,10 @@ const getOne = async (req, res) => {
   }
 };
 
-module.exports = { create, login, checkToken, getOne };
+const del = async (req, res) => {
+  const { userId } = req.params;
+  const del1 = await User.findById(userId);
+  res.status(200).json({ del1 });
+};
+
+module.exports = { create, login, checkToken, getOne, del };

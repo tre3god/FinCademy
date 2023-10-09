@@ -45,4 +45,14 @@ const checkToken = async () => {
   }
 };
 
-export { postUserData, postUserLogin, checkToken };
+const findStudentCourse = async () => {
+  const response = await fetch(`${BASE_URL}/${user.Id}`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(),
+  });
+};
+
+export { postUserData, postUserLogin, checkToken, findStudentCourse };

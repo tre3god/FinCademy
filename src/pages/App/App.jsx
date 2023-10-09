@@ -7,7 +7,7 @@ import CreateReviewPage from "../CourseReviewPage/CreateReviewPage";
 import LoginPage from "../AuthPage/LoginPage";
 import SignupPage from "../AuthPage/SignupPage";
 import StudentProfile from "../StudentProfile/StudentProfile";
-import TempLandingPage from "../OrderHistoryPage/TempLandingPage";
+import TempLandingPage from "../TempLandingPage/TempLandingPage";
 import AllCourses from "../../components/AllCourses/AllCourses";
 
 const log = debug("fincademy:src:App");
@@ -21,6 +21,8 @@ export default function App() {
 	const updateUser = (user) => setUser(user);
 
 	return (
+		<>
+		<h1>FinCademy</h1>
 		<main className="App">
 			{user ? (
 				<>
@@ -52,5 +54,6 @@ export default function App() {
 				</>
 			)}
 		</main>
+		</>
 	);
 }

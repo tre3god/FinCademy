@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import * as courseService from "../../utilities/course-service";
 import { Button, Stack } from "react-bootstrap";
 import debug from "debug";
@@ -10,6 +10,7 @@ const log = debug("fincademy:CoursesPage:CourseInfoPage");
 export default function CourseInfoPage() {
 	const [course, setCourse] = useState({});
 	const { courseId } = useParams();
+	const navigate = useNavigate();
 
 	useEffect(() => {
 		const fetchContent = async () => {
@@ -41,7 +42,11 @@ export default function CourseInfoPage() {
 				{course.reviews?.map((review) => (
 					<ReviewsHistory key={review._id} review={review} />
 				))}
-				<Button className="col-md-5 mx-auto" onClick={handleEnroll}>
+				<Button className="col-md-5 mx-auto"
+				onClick={() => {
+					handleEnroll();
+					navigate(`/courses/${course._id}/content`);
+				}}>
 					Enroll
 				</Button>
 			</Stack>

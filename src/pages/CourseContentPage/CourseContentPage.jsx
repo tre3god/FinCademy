@@ -6,7 +6,7 @@ import debug from "debug";
 
 const log = debug("fincademy:CourseContentPage:CourseContentPage");
 
-export default function CourseInfoPage() {
+export default function CourseContentPage() {
   const [course, setCourse] = useState({});
   const { courseId } = useParams();
 

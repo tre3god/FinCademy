@@ -1,7 +1,7 @@
 const Course = require("../../models/Course");
 const Quiz = require("../../models/Quiz");
 
-async function showQuiz(req, res) {
+async function getQuiz(req, res) {
   try {
     const course = await Course.findById(req.params.courseId);
     const quiz = await Quiz.find({ course: course._id });
@@ -12,5 +12,5 @@ async function showQuiz(req, res) {
 }
 
 module.exports = {
-  showQuiz,
+  getQuiz,
 };

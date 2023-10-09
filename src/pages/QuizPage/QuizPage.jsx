@@ -4,7 +4,7 @@ import { Button } from "react-bootstrap";
 import * as quizService from "../../utilities/quiz-service";
 
 export default function QuizPage() {
-  const [quizzes, setQuizzes] = useState([]);
+  const [quiz, setQuiz] = useState([]);
   const [index, setIndex] = useState(0);
   const [score, setScore] = useState(0);
   const [showScore, setShowScore] = useState(false);
@@ -14,7 +14,7 @@ export default function QuizPage() {
     const fetchQuiz = async () => {
       try {
         const data = await quizService.getQuiz(courseId);
-        setQuizzes(data);
+        setQuiz(data);
       } catch (error) {
         console.log(error);
       }
@@ -29,9 +29,9 @@ export default function QuizPage() {
       setScore(score + 1);
     }
 
-    const nextQuestion = index + 1;
-    if (nextQuestion < quizzes.length) {
-      setIndex(nextQuestion);
+    const nextIndex = index + 1;
+    if (nextIndex < quiz.length) {
+      setIndex(nextIndex);
     } else {
       setShowScore(true);
     }
@@ -41,18 +41,18 @@ export default function QuizPage() {
     <div>
       {showScore ? (
         <div>
-          You scored {score} out of {quizzes.length}
+          You scored {score} out of {quiz.length}
         </div>
       ) : (
         <>
           <div>
             <div>
-              <span>Question {index + 1}</span>/{quizzes.length}
+              <span>Question {index + 1}</span>/{quiz.length}
             </div>
-            <div>{quizzes[index].question}</div>
+            <div>{quiz[index]?.question}</div>
           </div>
           <div>
-            {quizzes[index].answers.map((answer) => (
+            {quiz[index]?.answers.map((answer) => (
               <Button
                 key={answer._id}
                 onClick={() => handleAnswerOptionClick(answer.isCorrect)}

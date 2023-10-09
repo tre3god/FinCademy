@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import * as courseService from "../../utilities/course-service";
 import { Button, Stack } from "react-bootstrap";
 import debug from "debug";
-import ReviewHistory from "../../components/Reviews/ReviewHistory";
+import ReviewsHistory from "../../components/Reviews/ReviewsHistory";
 
 const log = debug("fincademy:CoursesPage:CourseInfoPage");
 
@@ -38,7 +38,7 @@ export default function CourseInfoPage() {
 				</div>
 				<div className="p-2">Course Price: {course.price}</div>
 				<div className="p-2">Course Reviews:</div>
-				<ReviewHistory reviews={course.reviews} />
+				<ReviewsHistory reviews={course.reviews} />
 				<Button className="col-md-5 mx-auto" onClick={handleEnroll}>
 					Enroll
 				</Button>

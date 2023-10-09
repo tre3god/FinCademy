@@ -1,5 +1,4 @@
 const Course = require("../../models/Course");
-const debug = require("debug")("fincademy:controllers:coursesCtrl");
 const debug = require("debug")("fincademy:controllers:reviewsCtrl");
 
 const createReview = async (req, res) => {

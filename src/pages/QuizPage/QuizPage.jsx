@@ -1,16 +1,19 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import { Button } from "react-bootstrap";
 import * as quizService from "../../utilities/quiz-service";
 
 export default function QuizPage() {
   const [quizzes, setQuizzes] = useState([]);
+  const [index, setIndex] = useState(0);
   const [score, setScore] = useState(0);
-  const courseId = useParams();
+  const [showScore, setShowScore] = useState(false);
+  const { courseId } = useParams();
 
   useEffect(() => {
     const fetchQuiz = async () => {
       try {
-        const data = await quizService.getContent(courseId);
+        const data = await quizService.getQuiz(courseId);
         setQuizzes(data);
       } catch (error) {
         console.log(error);
@@ -19,19 +22,47 @@ export default function QuizPage() {
     fetchQuiz();
   }, [courseId]);
 
+  // Quiz referenced from https://github.com/chrisblakely01/quiz-app
+
+  const handleAnswerOptionClick = (isCorrect) => {
+    if (isCorrect) {
+      setScore(score + 1);
+    }
+
+    const nextQuestion = index + 1;
+    if (nextQuestion < quizzes.length) {
+      setIndex(nextQuestion);
+    } else {
+      setShowScore(true);
+    }
+  };
+
   return (
-    <>
-      {quizzes.map((quiz) => (
+    <div>
+      {showScore ? (
+        <div>
+          You scored {score} out of {quizzes.length}
+        </div>
+      ) : (
         <>
-          <div key={quiz._id}>
-            <h3>{quiz.question}</h3>
-            <button type="radio">&nbsp;{quiz.option1}</button>
-            <button type="radio">&nbsp;{quiz.option2}</button>
-            <button type="radio">&nbsp;{quiz.option3}</button>
-            <button type="radio">&nbsp;{quiz.option4}</button>
+          <div>
+            <div>
+              <span>Question {index + 1}</span>/{quizzes.length}
+            </div>
+            <div>{quizzes[index].question}</div>
+          </div>
+          <div>
+            {quizzes[index].answers.map((answer) => (
+              <Button
+                key={answer._id}
+                onClick={() => handleAnswerOptionClick(answer.isCorrect)}
+              >
+                {answer.text}
+              </Button>
+            ))}
           </div>
         </>
-      ))}
-    </>
+      )}
+    </div>
   );
 }

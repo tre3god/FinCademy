@@ -7,10 +7,10 @@ import CreateReviewPage from "../CourseReviewPage/CreateReviewPage";
 import LoginPage from "../AuthPage/LoginPage";
 import SignupPage from "../AuthPage/SignupPage";
 import StudentProfile from "../StudentProfile/StudentProfile";
-import TempLandingPage from "../OrderHistoryPage/TempLandingPage";
+import TempLandingPage from "../TempLandingPage/TempLandingPage";
 import AllCourses from "../CoursesPage/AllCoursesPage";
 import CourseInfoPage from "../CoursesPage/CourseInfoPage";
-
+import CourseContentPage from "../CourseContentPage/CourseContentPage";
 
 const log = debug("fincademy:src:App");
 localStorage.debug = "fincademy:*";
@@ -18,44 +18,50 @@ localStorage.debug = "fincademy:*";
 log("Start app");
 
 export default function App() {
-	const [user, setUser] = useState(getUser());
+  const [user, setUser] = useState(getUser());
 
-	const updateUser = (user) => setUser(user);
+  const updateUser = (user) => setUser(user);
 
-	return (
-		<>
-		<h1>FinCademy</h1>
-		<main className="App">
-			{user ? (
-				<>
-					<NavBar user={user} setUser={updateUser} />
-					<Routes>
-						<Route path="/" element={<TempLandingPage />} />
-						<Route path="/courses" element={<AllCourses />} />
-						<Route path="/courses/:courseId" element={<CourseInfoPage />} />
-						<Route path="/users/:userId" element={<StudentProfile />} />
-						<Route
-							path="/courses/:courseId/review"
-							element={<CreateReviewPage />}
-						/>
-						<Route path="/courses/:courseId/content" />
-					</Routes>
-				</>
-			) : (
-				<>
-					<Routes>
-						<Route path="/" element={<TempLandingPage />} />
-						<Route path="/courses" element={<AllCourses />} />
-						<Route path="/courses/:courseId" element={<CourseInfoPage />} />
-						<Route path="/login" element={<LoginPage setUser={updateUser} />} />
-						<Route
-							path="/signup"
-							element={<SignupPage setUser={updateUser} />}
-						/>
-					</Routes>
-				</>
-			)}
-		</main>
-		</>
-	);
+  return (
+    <>
+      <h1>FinCademy</h1>
+      <main className="App">
+        {user ? (
+          <>
+            <NavBar user={user} setUser={updateUser} />
+            <Routes>
+              <Route path="/" element={<TempLandingPage />} />
+              <Route path="/courses" element={<AllCourses />} />
+              <Route path="/courses/:courseId" element={<CourseInfoPage />} />
+              <Route path="/users/:userId" element={<StudentProfile />} />
+              <Route
+                path="/courses/:courseId/review"
+                element={<CreateReviewPage />}
+              />
+              <Route
+                path="/courses/:courseId/content"
+                element={<CourseContentPage />}
+              />
+            </Routes>
+          </>
+        ) : (
+          <>
+            <Routes>
+              <Route path="/" element={<TempLandingPage />} />
+              <Route path="/courses" element={<AllCourses />} />
+              <Route path="/courses/:courseId" element={<CourseInfoPage />} />
+              <Route
+                path="/login"
+                element={<LoginPage setUser={updateUser} />}
+              />
+              <Route
+                path="/signup"
+                element={<SignupPage setUser={updateUser} />}
+              />
+            </Routes>
+          </>
+        )}
+      </main>
+    </>
+  );
 }

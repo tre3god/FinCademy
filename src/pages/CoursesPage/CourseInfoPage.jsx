@@ -35,7 +35,7 @@ export default function CourseInfoPage() {
 			<h1>{course.courseTitle}</h1>
 			<Stack gap={3}>
 				<div className="p-2">
-					Course Long Description: {course.longdescription}
+					Course Long Description: {course.longDescription}
 				</div>
 				<div className="p-2">Course Price: {course.price}</div>
 				<div className="p-2">Course Reviews:</div>

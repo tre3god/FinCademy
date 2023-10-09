@@ -67,10 +67,9 @@ const checkToken = async () => {
   return date;
 };
 
-const findStudentCourses = async () => {
-  const data = await userApi.findStudentCourses();
-  const studentCourses = data.courses;
-  return studentCourses;
+const findStudentCourses = async (userId) => {
+  const data = await userApi.findStudentCourses(userId);
+  return data;
 };
 
 export {

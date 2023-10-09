@@ -15,7 +15,7 @@ const courseSchema = new Schema(
         courseTitle: { type: String, required: true },
         shortDescription: { type: String, required: true },
         longDescription: String,
-        content: { type: Schema.Types.ObjectId, ref: "Content" },
+        content: {type: String, required: true},
         price: { type: Number, required: true },
         reviews: [reviewSchema],
         source: String,

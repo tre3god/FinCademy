@@ -1,17 +1,16 @@
 import debug from "debug";
 import { useState } from "react";
 import { Route, Routes } from "react-router-dom";
-// import NavBar from "../../components/NavBar/NavBar";
 import { getUser } from "../../utilities/users-service";
 import CreateReviewPage from "../CourseReviewPage/CreateReviewPage";
 import LoginPage from "../AuthPage/LoginPage";
 import SignupPage from "../AuthPage/SignupPage";
 import StudentProfile from "../StudentProfile/StudentProfile";
-import TempLandingPage from "../OrderHistoryPage/TempLandingPage";
-import AllCourses from "../CoursesPage/AllCoursesPage";
+import TempLandingPage from "../TempLandingPage/TempLandingPage";
 import CourseInfoPage from "../CoursesPage/CourseInfoPage";
 import RBSNavBar from "../../components/NavBar/RBSNavBar";
-
+import AllCoursesPage from "../CoursesPage/AllCoursesPage";
+import CourseContentPage from "../CourseContentPage/CourseContentPage";
 
 const log = debug("fincademy:src:App");
 localStorage.debug = "fincademy:*";
@@ -19,13 +18,12 @@ localStorage.debug = "fincademy:*";
 log("Start app");
 
 export default function App() {
-	const [user, setUser] = useState(getUser());
+  const [user, setUser] = useState(getUser());
 
-	const updateUser = (user) => setUser(user);
+  const updateUser = (user) => setUser(user);
 
 	return (
 		<>
-		<h1>FinCademy</h1>
 		<main className="App">
 			<RBSNavBar user={user} setUser={updateUser} />
 			{user ? (

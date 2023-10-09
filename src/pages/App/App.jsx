@@ -11,6 +11,7 @@ import TempLandingPage from "../OrderHistoryPage/TempLandingPage";
 import AllCourses from "../CoursesPage/AllCoursesPage";
 import CourseInfoPage from "../CoursesPage/CourseInfoPage";
 
+
 const log = debug("fincademy:src:App");
 localStorage.debug = "fincademy:*";
 
@@ -22,6 +23,8 @@ export default function App() {
 	const updateUser = (user) => setUser(user);
 
 	return (
+		<>
+		<h1>FinCademy</h1>
 		<main className="App">
 			{user ? (
 				<>
@@ -53,5 +56,6 @@ export default function App() {
 				</>
 			)}
 		</main>
+		</>
 	);
 }

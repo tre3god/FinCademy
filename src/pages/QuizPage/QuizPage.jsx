@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { Button, Spinner } from "react-bootstrap";
 import * as quizService from "../../utilities/quiz-service";
 
@@ -10,6 +10,7 @@ export default function QuizPage() {
   const [showScore, setShowScore] = useState(false);
   const [status, setStatus] = useState("idle");
   const { courseId } = useParams();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchQuiz = async () => {
@@ -53,9 +54,15 @@ export default function QuizPage() {
   return (
     <div>
       {showScore ? (
-        <div>
-          You scored {score} out of {quiz.length}
-        </div>
+        <>
+          <div>
+            You scored {score} out of {quiz.length}
+          </div>
+          <br />
+          <Button size="sm" onClick={() => navigate("/profile")}>
+            Exit Course
+          </Button>
+        </>
       ) : (
         <>
           <div>

@@ -69,7 +69,7 @@ export default function LoginPage({ setUser }) {
       <Row>
         <Col md={6}>
           <div className="register-link">
-            Don't have an account? <Link to="/signup">Register</Link>
+            Don't have an account? <Link to="/signup">Register here!</Link>
           </div>
         </Col>
       </Row>

@@ -14,6 +14,7 @@ export default function StudentProfile({ user }) {
 			console.log(error);
 		}
 	};
+  console.log(user)
 
 	if (!user) {
 		return (

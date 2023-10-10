@@ -60,49 +60,52 @@ export default function QuizPage() {
 		navigate("/profile");
 	};
 
-	return (
-		<div>
-			{showScore ? (
-				<>
-					<Container className="d-flex justify-content-center">
-						<h3>
-							You scored {score} out of {quiz.length}.
-						</h3>
-						<br />
-						<Button size="sm" onClick={handleExit}>
-							Exit Course
-						</Button>
-					</Container>
-				</>
-			) : (
-				<>
-					<Container>
-						<div className="d-flex flex-column align-items-center">
-							<div>
-								<span>Question {idx + 1}</span>/{quiz.length}
-							</div>
-							<br />
-							<div>{quiz[idx]?.question}</div>
-						</div>
-						<br />
-						<div className="d-flex flex-column align-items-center">
-							{quiz[idx]?.answers.map((answer, index) => (
-								<>
-									<div className="mb-2">
-										<Button
-											key={answer._id}
-											onClick={() => handleAnswerOptionClick(index)}
-											size="sm">
-											{answer}
-										</Button>
-										<br />
-									</div>
-								</>
-							))}
-						</div>
-					</Container>
-				</>
-			)}
-		</div>
-	);
+  return (
+    <div>
+      {showScore ? (
+        <>
+        <Container className="d-flex justify-content-center">
+          <h3>
+            You scored {score} out of {quiz.length}.
+          </h3>
+          <br />
+          <Button size="sm" onClick={handleExit}>
+            Exit Course
+          </Button>
+          </Container>
+        </>
+      ) : (
+        <>
+        
+        <Container>
+        <div className="d-flex flex-column align-items-center">
+            <div>
+              <span>Question {idx + 1}</span>/{quiz.length}
+            </div>
+            <br />
+            <div>{quiz[idx]?.question}</div>
+          </div>
+          <br />
+          <div className="d-flex flex-column align-items-center">
+            {quiz[idx]?.answers.map((answer, index) => (
+              <>
+                <div className="mb-2">
+                  <Button
+                    key={answer._id}
+                    onClick={() => handleAnswerOptionClick(index)}
+                    size="sm"
+                  >
+                    {answer}
+                  </Button>
+                  <br />
+                </div>
+              </>
+            ))}
+          </div>
+          </Container>
+          
+        </>
+      )}
+    </div>
+  );
 }

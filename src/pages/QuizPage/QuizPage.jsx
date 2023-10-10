@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { Button, Spinner } from "react-bootstrap";
+import { Button, Spinner, Container} from "react-bootstrap";
 import * as quizService from "../../utilities/quiz-service";
 
 export default function QuizPage() {
@@ -30,10 +30,12 @@ export default function QuizPage() {
 
   if (isLoading) {
     return (
-      <Spinner animation="border" variant="success" role="status">
-        <span className="visually-hidden">Loading...</span>
-      </Spinner>
-    );
+      <Container className="d-flex justify-content-center vh-100">
+        <Spinner animation="border" variant="success" role="status">
+          <span className="visually-hidden">Loading...</span>
+        </Spinner>
+      </Container>
+    )
   }
 
   // Quiz adapted from https://github.com/chrisblakely01/quiz-app
@@ -55,17 +57,23 @@ export default function QuizPage() {
     <div>
       {showScore ? (
         <>
-          <div>
-            You scored {score} out of {quiz.length}
-          </div>
+        <Container className="d-flex justify-content-center">
+          <h3>
+            You scored {score} out of {quiz.length}.
+          </h3>
+          </Container>
           <br />
+          <Container className="d-flex justify-content-center">
           <Button size="sm" onClick={() => navigate("/profile")}>
             Exit Course
           </Button>
+          </Container>
         </>
       ) : (
         <>
-          <div>
+        
+        <Container>
+        <div className="d-flex flex-column align-items-center">
             <div>
               <span>Question {idx + 1}</span>/{quiz.length}
             </div>
@@ -73,7 +81,7 @@ export default function QuizPage() {
             <div>{quiz[idx]?.question}</div>
           </div>
           <br />
-          <div>
+          <div className="d-flex flex-column align-items-center">
             {quiz[idx]?.answers.map((answer, index) => (
               <>
                 <div className="mb-2">
@@ -89,6 +97,8 @@ export default function QuizPage() {
               </>
             ))}
           </div>
+          </Container>
+          
         </>
       )}
     </div>

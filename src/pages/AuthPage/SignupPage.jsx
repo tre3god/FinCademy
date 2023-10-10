@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { signUp } from "../../utilities/users-service";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Button, Form, Container, Row, Col } from "react-bootstrap";
 
 
@@ -91,6 +91,13 @@ export default function SignupPage({ setUser }) {
               <p className="error-message">&nbsp;{formData.error}</p>
             </Col>
           </Row>
+          <Row>
+        <Col md={6}>
+          <div className="register-link">
+            If you have an account, click here to <Link to="/login">login!</Link>
+          </div>
+        </Col>
+      </Row>
         </Container>
       );
     }

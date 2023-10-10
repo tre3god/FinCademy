@@ -1,15 +1,14 @@
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import * as courseService from "../../utilities/course-service";
-import { Button, Stack, Col, Row, Container } from "react-bootstrap";
+import { Button, Col, Row, Container } from "react-bootstrap";
 import debug from "debug";
 import ReviewsHistory from "../../components/Reviews/ReviewsHistory";
-import { enrollCourse } from "../../utilities/users-service";
-import { auto } from "@popperjs/core";
+import { enrollCourse, getUser } from "../../utilities/users-service";
 
 const log = debug("fincademy:CoursesPage:CourseInfoPage");
 
-export default function CourseInfoPage() {
+export default function CourseInfoPage({ user, setUser }) {
 	const [course, setCourse] = useState({});
 	const { courseId } = useParams();
 	const navigate = useNavigate();
@@ -29,8 +28,8 @@ export default function CourseInfoPage() {
 	}, [courseId]);
 
 	const handleEnroll = async () => {
-		log(courseId);
-		await enrollCourse({ courseId });
+		const updatedUser = await enrollCourse({ courseId });
+		setUser(updatedUser);
 		navigate(`/courses/${course._id}/content`);
 	};
 
@@ -69,11 +68,19 @@ export default function CourseInfoPage() {
 					))}
 				</Col>
 			</Row>
-			<Row className="justify-content-center">
-				<Button className="col-md-5" onClick={handleEnroll}>
-					Enroll
-				</Button>
-			</Row>
+			{user ? (
+				<Row className="justify-content-center">
+					<Button className="col-md-5" onClick={handleEnroll}>
+						Enroll
+					</Button>
+				</Row>
+			) : (
+				<Row className="justify-content-center">
+					<Button className="col-md-5" onClick={() => navigate("/login")}>
+						Login to Enroll
+					</Button>
+				</Row>
+			)}
 		</Container>
 	);
 }

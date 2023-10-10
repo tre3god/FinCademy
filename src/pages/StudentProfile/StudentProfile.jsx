@@ -14,13 +14,14 @@ export default function StudentProfile({ user }) {
 			console.log(error);
 		}
 	};
+  console.log(user)
 
 	if (!user) {
 		return (
 			<Container className="mt-5">
 				<Row>
 					<Col>
-						<Spinner variant="success" animation="border" role="status">
+						<Spinner animation="border" role="status">
 							<span className="sr-only"></span>
 						</Spinner>
 						<div>Loading...</div>

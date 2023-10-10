@@ -1,8 +1,8 @@
 import * as userApi from "./users-api";
 
-// import debug from "debug";
+import debug from "debug";
 
-// const log = debug("fincademy:utilities:users-service");
+const log = debug("fincademy:utilities:users-service");
 
 const signUp = async (formData) => {
 	const { name, email, password } = formData;
@@ -74,7 +74,7 @@ const findStudentCourses = async (userId) => {
 
 const enrollCourse = async (courseId) => {
 	const data = await userApi.enrollCourse(courseId);
-	return data;
+	return data.user;
 };
 
 const delCourse = async (courseId) => {

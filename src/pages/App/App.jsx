@@ -12,8 +12,7 @@ import NavBar from "../../components/NavBar/NavBar";
 import AllCoursesPage from "../CoursesPage/AllCoursesPage";
 import CourseContentPage from "../CourseContentPage/CourseContentPage";
 import QuizPage from "../QuizPage/QuizPage";
-import './App.css';
-
+import "./App.css";
 
 const log = debug("fincademy:src:App");
 localStorage.debug = "fincademy:*";
@@ -34,7 +33,10 @@ export default function App() {
 						<Routes>
 							<Route path="/" element={<TempLandingPage />} />
 							<Route path="/courses" element={<AllCoursesPage />} />
-							<Route path="/courses/:courseId" element={<CourseInfoPage />} />
+							<Route
+								path="/courses/:courseId"
+								element={<CourseInfoPage user={user} setUser={updateUser} />}
+							/>
 							<Route path="/profile" element={<StudentProfile user={user} />} />
 							<Route
 								path="/courses/:courseId/review"

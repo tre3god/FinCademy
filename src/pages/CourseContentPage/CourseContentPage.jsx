@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import * as courseService from "../../utilities/course-service";
-import { Button } from "react-bootstrap";
+import { Button, Container, Row, Col } from "react-bootstrap";
 import debug from "debug";
 import ReactMarkdown from "react-markdown";
 
@@ -26,15 +26,24 @@ export default function CourseContentPage() {
   const parsedContent = course.content ? course.content.replace(/\\n/g,"\n") : "";
 
   return (
-    <>
-      <br />
-      <h1>{course.courseTitle}</h1>
-      <br />
-      <ReactMarkdown>{parsedContent}</ReactMarkdown>
-      <br />
-      <Link to={`/quiz/${courseId}`}>
-        <Button className="col-md-5 mx-auto">Take the quiz now!</Button>
-      </Link>
-    </>
+    <Container className="mt-4" style={{ maxWidth: "63%" }}>
+      <Row>
+        <Col>
+          <h1>{course.courseTitle}</h1>
+        </Col>
+      </Row>
+      <Row className="mt-4">
+        <Col>
+          <ReactMarkdown>{parsedContent}</ReactMarkdown>
+        </Col>
+      </Row>
+      <Row className="mt-4">
+        <Col className="text-center d-flex justify-content-center">  {/* Added d-flex and justify-content-center */}
+          <Link to={`/quiz/${courseId}`}>
+            <Button>Take the quiz now!</Button>
+          </Link>
+        </Col>
+      </Row>
+    </Container>
   );
 }

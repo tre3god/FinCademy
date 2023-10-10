@@ -40,7 +40,9 @@ export default function StudentProfile({ user, setUser }) {
 					<Row>
 						<Col sm={1}>{index + 1}.</Col>
 						<Col sm={6}>
-							<Link to={`/courses/${course.course}`}>{course.course}</Link>
+							<Link to={`/courses/${course.course}/content`}>
+								{course.course}
+							</Link>
 						</Col>
 						<Col sm={3}>
 							<Link to={`/courses/${course.course}/review`}>

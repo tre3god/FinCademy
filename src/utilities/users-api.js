@@ -70,6 +70,10 @@ const delCourse = async (courseId) => {
 	return sendRequest(`${BASE_URL}/unenroll/${courseId}`, "DELETE");
 };
 
+const updateQuizScore = (quizScore, courseId) => {
+	return sendRequest(`${BASE_URL}/${courseId}/quiz-score`, "PATCH", quizScore)
+}
+
 export {
 	postUserData,
 	postUserLogin,
@@ -77,4 +81,5 @@ export {
 	findStudentCourses,
 	enrollCourse,
 	delCourse,
+	updateQuizScore,
 };

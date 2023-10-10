@@ -5,7 +5,7 @@ const debug = require("debug")("fincademy:controllers:usersCtrl");
 
 const createJWT = (user) => {
 	return jwt.sign({ user }, process.env.SECRET, {
-		expiresIn: "30m",
+		expiresIn: "8hr",
 	});
 };
 
@@ -57,10 +57,4 @@ const getOne = async (req, res) => {
 	}
 };
 
-const del = async (req, res) => {
-	const { userId } = req.params;
-	const del1 = await User.findById(userId);
-	res.status(200).json({ del1 });
-};
-
-module.exports = { create, login, checkToken, getOne, del };
+module.exports = { create, login, checkToken, getOne };

@@ -6,14 +6,18 @@ const createReview = async (req, res) => {
 		const { courseId } = req.params;
 		const { rating, comments } = req.body;
 		const userId = req.user._id;
-		const newReview = { rating, comments, user: userId };
-		debug(newReview);
-		// check if user has already left a review
 		const course = await Course.findById(courseId);
-		debug(course);
 
+		if (course.reviews.some((review) => review.user.toString() === userId)) {
+			return res
+				.status(400)
+				.json({ error: "You have already reviewed this course." });
+		}
+
+		const newReview = { rating, comments, user: userId };
 		course.reviews.push(newReview);
 		await course.save();
+
 		res.status(201).json({ course });
 	} catch (error) {
 		res.status(500).json({ error });

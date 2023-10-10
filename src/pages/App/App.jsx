@@ -2,7 +2,6 @@ import debug from "debug";
 import { useState } from "react";
 import { Route, Routes } from "react-router-dom";
 import { getUser } from "../../utilities/users-service";
-import CreateReviewPage from "../CourseReviewPage/CreateReviewPage";
 import LoginPage from "../AuthPage/LoginPage";
 import SignupPage from "../AuthPage/SignupPage";
 import StudentProfile from "../StudentProfile/StudentProfile";
@@ -13,6 +12,7 @@ import AllCoursesPage from "../CoursesPage/AllCoursesPage";
 import CourseContentPage from "../CourseContentPage/CourseContentPage";
 import QuizPage from "../QuizPage/QuizPage";
 import "./App.css";
+import CourseReviewPage from "../CourseReviewPage/CreateReviewPage";
 
 const log = debug("fincademy:src:App");
 localStorage.debug = "fincademy:*";
@@ -43,7 +43,7 @@ export default function App() {
 							/>
 							<Route
 								path="/courses/:courseId/review"
-								element={<CreateReviewPage user={user} />}
+								element={<CourseReviewPage user={user} />}
 							/>
 							<Route
 								path="/courses/:courseId/content"

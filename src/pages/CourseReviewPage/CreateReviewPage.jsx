@@ -5,13 +5,15 @@ import { useNavigate, useParams } from "react-router-dom";
 import debug from "debug";
 import { addReview } from "../../utilities/review-service";
 import * as courseService from "../../utilities/course-service";
+import EditReviewModal from "../../components/Reviews/EditReviewModal";
 
-const log = debug("fincademy:CreateReviewPage");
+const log = debug("fincademy:CourseReviewPage");
 
-export default function CreateReviewPage({ user }) {
+export default function CourseReviewPage({ user }) {
 	const { courseId } = useParams();
 	const [rating, setRating] = useState(0);
 	const [course, setCourse] = useState({});
+	const [isEditModalOpen, setIsEditModalOpen] = useState(false);
 	const navigate = useNavigate();
 
 	const username = user.name;
@@ -80,9 +82,13 @@ export default function CreateReviewPage({ user }) {
 							<Form.Label>Rating</Form.Label>
 							<Rating name="rating" value={userLeftReview.rating} readOnly />
 						</Form.Group>
-						<Button variant="primary" type="submit">
+						<Button variant="primary" onClick={() => setIsEditModalOpen(true)}>
 							Edit Review
 						</Button>
+						<EditReviewModal
+							show={isEditModalOpen}
+							onHide={() => setIsEditModalOpen(false)}
+						/>
 					</Form>
 				</>
 			) : (

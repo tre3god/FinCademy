@@ -11,7 +11,7 @@ const enroll = async (req, res) => {
 	if (!isEnrolled) {
 		const newEnrollment = {
 			course: courseId,
-			completed: false,
+			quizScore: null,
 		};
 		user.enrolledCourses.push(newEnrollment);
 

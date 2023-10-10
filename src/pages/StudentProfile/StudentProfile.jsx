@@ -2,19 +2,18 @@ import { Link } from "react-router-dom";
 import { Button, Container, Row, Col, Spinner } from "react-bootstrap";
 import * as userService from "../../utilities/users-service";
 
-export default function StudentProfile({ user }) {
+export default function StudentProfile({ user, setUser }) {
 	const handleUnsub = async (event) => {
 		const courseId = event.currentTarget.getAttribute("course");
-		console.log("click unsub " + courseId);
 
 		try {
-			const data = await userService.delCourse(courseId);
-			console.log("Unsubscribe response:", data);
+			const updatedUser = await userService.delCourse(courseId);
+			setUser(updatedUser);
 		} catch (error) {
 			console.log(error);
 		}
 	};
-  console.log(user)
+	console.log(user);
 
 	if (!user) {
 		return (
@@ -49,7 +48,10 @@ export default function StudentProfile({ user }) {
 							</Link>
 						</Col>
 						<Col sm={2}>
-							<Button variant="danger" onClick={handleUnsub} course={course}>
+							<Button
+								variant="danger"
+								onClick={handleUnsub}
+								course={course.course}>
 								Unenroll
 							</Button>
 						</Col>

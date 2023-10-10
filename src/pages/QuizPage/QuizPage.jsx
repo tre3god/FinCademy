@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
-import { Button, Spinner, Container } from "react-bootstrap";
+import { useParams, useNavigate } from "react-router-dom";
+import { Button, Spinner, Container} from "react-bootstrap";
 import * as quizService from "../../utilities/quiz-service";
 
 export default function QuizPage() {
@@ -10,6 +10,7 @@ export default function QuizPage() {
   const [showScore, setShowScore] = useState(false);
   const [status, setStatus] = useState("idle");
   const { courseId } = useParams();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchQuiz = async () => {
@@ -55,11 +56,19 @@ export default function QuizPage() {
   return (
     <div>
       {showScore ? (
-        <Container className="d-flex justify-content-center align-items-center vh-100">
-        <h3>
-          You scored {score} out of {quiz.length}.
-        </h3>
-        </Container>
+        <>
+        <Container className="d-flex justify-content-center">
+          <h3>
+            You scored {score} out of {quiz.length}.
+          </h3>
+          </Container>
+          <br />
+          <Container className="d-flex justify-content-center">
+          <Button size="sm" onClick={() => navigate("/profile")}>
+            Exit Course
+          </Button>
+          </Container>
+        </>
       ) : (
         <>
         

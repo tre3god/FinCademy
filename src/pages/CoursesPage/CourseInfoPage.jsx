@@ -29,7 +29,8 @@ export default function CourseInfoPage() {
 	}, [courseId]);
 
 	const handleEnroll = async () => {
-		await enrollCourse(courseId);
+		log(courseId);
+		await enrollCourse({ courseId });
 		navigate(`/courses/${course._id}/content`);
 	};
 
@@ -37,7 +38,10 @@ export default function CourseInfoPage() {
 		<Container>
 			<Row>
 				<Col>
-					<img src={course.img} style={{ width: '100%', height: 'auto', maxHeight: "450px" }} />
+					<img
+						src={course.img}
+						style={{ width: "100%", height: "auto", maxHeight: "450px" }}
+					/>
 				</Col>
 			</Row>
 			<Row>

@@ -57,10 +57,13 @@ export default function StudentProfile({ user, setUser }) {
 				<div key={index} className="mb-2">
 					<Row>
 						<Col sm={1}>{index + 1}.</Col>
-						<Col sm={6}>
+						<Col sm={3}>
 							<Link to={`/courses/${course.course}/content`}>
 								{course.course}
 							</Link>
+						</Col>
+						<Col sm={3}>
+							<span>Quiz score: {course.quizScore}/5</span>
 						</Col>
 						<Col sm={3}>
 							<Link to={`/courses/${course.course}/review`}>

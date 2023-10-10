@@ -2,6 +2,8 @@
 import { useState } from "react";
 import { signUp } from "../../utilities/users-service";
 import { useNavigate } from "react-router-dom";
+import { Button, Form, Container, Row, Col } from "react-bootstrap";
+
 
 export default function SignupPage({setUser}) {
     const [formData, setFormData] = useState({
@@ -38,54 +40,61 @@ export default function SignupPage({setUser}) {
 
 	const disable = formData.password !== formData.confirm;
     return (
-        <>
-        <h1>Get started with a free account!</h1>
-        <div>
-            <div className="form-container">
-                <form autoComplete="off" onSubmit={handleSubmit}>
-                    <label>Name</label>
-                    <input
-                        type="text"
-                        name="name"
-                        value={formData.name}
-                        onChange={handleChange}
-                        required
+        <Container className="signuppage">
+          <h1>Get started with a free account!</h1>
+          <Row>
+            <Col md={6}>
+              <div className="form-container">
+                <Form autoComplete="off" onSubmit={handleSubmit}>
+                  <Form.Group>
+                    <Form.Label>Name</Form.Label>
+                    <Form.Control
+                      type="text"
+                      name="name"
+                      value={formData.name}
+                      onChange={handleChange}
+                      required
                     />
-                    <br></br>
-                    <label>Email</label>
-                    <input
-                        type="email"
-                        name="email"
-                        value={formData.email}
-                        onChange={handleChange}
-                        required
+                  </Form.Group>
+                  <Form.Group>
+                    <Form.Label>Email</Form.Label>
+                    <Form.Control
+                      type="email"
+                      name="email"
+                      value={formData.email}
+                      onChange={handleChange}
+                      required
                     />
-                    <br></br>
-                    <label>Password</label>
-                    <input
-                        type="password"
-                        name="password"
-                        value={formData.password}
-                        onChange={handleChange}
-                        required
+                  </Form.Group>
+                  <Form.Group>
+                    <Form.Label>Password</Form.Label>
+                    <Form.Control
+                      type="password"
+                      name="password"
+                      value={formData.password}
+                      onChange={handleChange}
+                      required
                     />
-                    <br></br>
-                    <label>Confirm</label>
-                    <input
-                        type="password"
-                        name="confirm"
-                        value={formData.confirm}
-                        onChange={handleChange}
-                        required
+                  </Form.Group>
+                  <Form.Group>
+                    <Form.Label>Confirm password</Form.Label>
+                    <Form.Control
+                      type="password"
+                      name="confirm"
+                      value={formData.confirm}
+                      onChange={handleChange}
+                      required
                     />
-                    <br></br>
-                    <button type="submit" disabled={disable}>
-                        SIGN UP
-                    </button>
-                </form>
-            </div>
-            <p className="error-message">&nbsp;{formData.error}</p>
-        </div>
-        </>
-    );
-}
+                  </Form.Group>
+                  <br></br>
+                  <Button type="submit" disabled={disable}>
+                    SIGN UP
+                  </Button>
+                </Form>
+              </div>
+              <p className="error-message">&nbsp;{formData.error}</p>
+            </Col>
+          </Row>
+        </Container>
+      );
+    }

@@ -20,7 +20,7 @@ export default function StudentProfile() {
 		};
 		fetchStudentDetails();
 	}, [userId]);
-    // console.log(studentId)
+    console.log(studentId)
 
     const handleUnsub = async (event) => {
       const courseId = event.currentTarget.getAttribute("course");

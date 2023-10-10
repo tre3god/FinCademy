@@ -6,7 +6,7 @@ export default function CourseCard({ course }) {
 	const navigate = useNavigate();
 	return (
 		<Card style={{ width: "18rem" }}>
-			<Card.Img variant="top" src={course.img} />
+			<Card.Img variant="top" src={course.img} style={{ width: "287px", height: "180px"}}/>
 			<Card.Body>
 				<Card.Title>{course.courseTitle}</Card.Title>
 				<Card.Text>{course.shortDescription}</Card.Text>

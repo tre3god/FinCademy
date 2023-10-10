@@ -8,7 +8,7 @@ const createReview = async (req, res) => {
 		const userId = req.user._id;
 		const newReview = { rating, comments, user: userId };
 		debug(newReview);
-
+		// check if user has already left a review
 		const course = await Course.findById(courseId);
 		debug(course);
 

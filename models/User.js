@@ -20,6 +20,7 @@ const userSchema = new Schema(
 			{
 				course: { type: mongoose.Schema.Types.ObjectId, ref: "Course" },
 				completed: { type: Boolean, default: false },
+				// quizScore replaces completed
 			},
 		],
 	},

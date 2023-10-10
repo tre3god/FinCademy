@@ -5,8 +5,6 @@ const SALT_ROUNDS = 6;
 
 const { Schema, model } = mongoose;
 
-// const enrollmentSchema? to put into courses []
-
 const userSchema = new Schema(
 	{
 		name: { type: String, required: true },
@@ -18,7 +16,12 @@ const userSchema = new Schema(
 			required: true,
 		},
 		password: { type: String, trim: true, minLength: 3, required: true },
-		courses: [],
+		enrolledCourses: [
+			{
+				course: { type: mongoose.Schema.Types.ObjectId, ref: "Course" },
+				completed: { type: Boolean, default: false },
+			},
+		],
 	},
 	{
 		timestamps: true,

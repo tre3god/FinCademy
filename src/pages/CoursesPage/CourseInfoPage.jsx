@@ -4,6 +4,7 @@ import * as courseService from "../../utilities/course-service";
 import { Button, Stack } from "react-bootstrap";
 import debug from "debug";
 import ReviewsHistory from "../../components/Reviews/ReviewsHistory";
+import { enrollCourse } from "../../utilities/users-service";
 
 const log = debug("fincademy:CoursesPage:CourseInfoPage");
 
@@ -28,7 +29,7 @@ export default function CourseInfoPage() {
 
 	const handleEnroll = async () => {
 		//* Push the course into the Student Model
-		// await
+		await enrollCourse({ courseId });
 	};
 
 	return (

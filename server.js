@@ -7,6 +7,7 @@ const logger = require("morgan");
 const debug = require("debug")("fincademy:server");
 
 const usersRouter = require("./routes/api/usersRoutes");
+const enrollsRouter = require("./routes/api/enrollsRoutes");
 const coursesRouter = require("./routes/api/coursesRoutes");
 const reviewsRouter = require("./routes/api/reviewsRoutes");
 const quizRouter = require("./routes/api/quizRoutes");
@@ -24,6 +25,7 @@ app.use(checkTokenMiddleware);
 
 //* routes
 app.use("/api/users", usersRouter);
+app.use("/api/users", enrollsRouter);
 app.use("/api/courses", coursesRouter);
 app.use("/api/courses", reviewsRouter);
 app.use("/api/quiz", quizRouter);

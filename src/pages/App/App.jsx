@@ -37,7 +37,10 @@ export default function App() {
 								path="/courses/:courseId"
 								element={<CourseInfoPage user={user} setUser={updateUser} />}
 							/>
-							<Route path="/profile" element={<StudentProfile user={user} />} />
+							<Route
+								path="/profile"
+								element={<StudentProfile user={user} setUser={updateUser} />}
+							/>
 							<Route
 								path="/courses/:courseId/review"
 								element={<CreateReviewPage user={user} />}

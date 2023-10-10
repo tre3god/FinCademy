@@ -1,20 +1,37 @@
 import { Link } from "react-router-dom";
 import { Button, Container, Row, Col, Spinner } from "react-bootstrap";
 import * as userService from "../../utilities/users-service";
+import { useEffect } from "react";
 
-export default function StudentProfile({ user }) {
+export default function StudentProfile({ user, setUser }) {
+	// useEffect(() => {
+	// 	async function fetchUserData() {
+	// 		try {
+	// 			const updatedUser = await userService.getUser();
+	// 			setUser((prevUser) => ({
+	// 				...prevUser,
+	// 				...updatedUser,
+	// 			}));
+	// 		} catch (error) {
+	// 			console.log(error);
+	// 		}
+	// 	}
+
+	// 	fetchUserData();
+	// }, [setUser]);
+
 	const handleUnsub = async (event) => {
 		const courseId = event.currentTarget.getAttribute("course");
-		console.log("click unsub " + courseId);
 
 		try {
-			const data = await userService.delCourse(courseId);
-			console.log("Unsubscribe response:", data);
+			const updatedUser = await userService.delCourse(courseId);
+			console.log("old", updatedUser);
+			setUser(updatedUser);
+			console.log("new", user);
 		} catch (error) {
 			console.log(error);
 		}
 	};
-  console.log(user)
 
 	if (!user) {
 		return (
@@ -41,7 +58,9 @@ export default function StudentProfile({ user }) {
 					<Row>
 						<Col sm={1}>{index + 1}.</Col>
 						<Col sm={6}>
-							<Link to={`/courses/${course.course}`}>{course.course}</Link>
+							<Link to={`/courses/${course.course}/content`}>
+								{course.course}
+							</Link>
 						</Col>
 						<Col sm={3}>
 							<Link to={`/courses/${course.course}/review`}>
@@ -49,7 +68,10 @@ export default function StudentProfile({ user }) {
 							</Link>
 						</Col>
 						<Col sm={2}>
-							<Button variant="danger" onClick={handleUnsub} course={course}>
+							<Button
+								variant="danger"
+								onClick={handleUnsub}
+								course={course.course}>
 								Unenroll
 							</Button>
 						</Col>

@@ -15,4 +15,9 @@
  margin-top: 150px;
 
 }
+
+.mx-auto {
+  display: block;
+  width: auto;
+}
   

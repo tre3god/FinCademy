@@ -4,7 +4,7 @@ import * as courseService from "../../utilities/course-service";
 import { Button, Col, Row, Container } from "react-bootstrap";
 import debug from "debug";
 import ReviewsHistory from "../../components/Reviews/ReviewsHistory";
-import { enrollCourse, getUser } from "../../utilities/users-service";
+import { enrollCourse } from "../../utilities/users-service";
 
 const log = debug("fincademy:CoursesPage:CourseInfoPage");
 
@@ -30,7 +30,7 @@ export default function CourseInfoPage({ user, setUser }) {
 	const handleEnroll = async () => {
 		const updatedUser = await enrollCourse({ courseId });
 		setUser(updatedUser);
-		navigate(`/courses/${course._id}/content`);
+		navigate("/profile");
 	};
 
 	return (

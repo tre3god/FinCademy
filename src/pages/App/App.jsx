@@ -33,7 +33,10 @@ export default function App() {
 							<Route path="/" element={<TempLandingPage />} />
 							<Route path="/courses" element={<AllCoursesPage />} />
 							<Route path="/courses/:courseId" element={<CourseInfoPage />} />
-							<Route path="/users/:userId" element={<StudentProfile />} />
+							<Route
+								path="/users/:userId"
+								element={<StudentProfile user={user} />}
+							/>
 							<Route
 								path="/courses/:courseId/review"
 								element={<CreateReviewPage user={user} />}

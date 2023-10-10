@@ -28,8 +28,8 @@ export default function CourseInfoPage({ user, setUser }) {
 	}, [courseId]);
 
 	const handleEnroll = async () => {
-		await enrollCourse({ courseId });
-		// setUser(getUser());
+		const updatedUser = await enrollCourse({ courseId });
+		setUser(updatedUser);
 		navigate(`/courses/${course._id}/content`);
 	};
 

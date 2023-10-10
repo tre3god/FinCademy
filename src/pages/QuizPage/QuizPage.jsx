@@ -64,7 +64,7 @@ export default function QuizPage() {
     <div>
       {showScore ? (
         <>
-        <Container> className="d-flex justify-content-center">
+        <Container className="d-flex justify-content-center">
           <h3>
             You scored {score} out of {quiz.length}.
           </h3>

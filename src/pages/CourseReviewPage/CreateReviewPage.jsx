@@ -6,9 +6,9 @@ import debug from "debug";
 import { addReview } from "../../utilities/review-service";
 import * as courseService from "../../utilities/course-service";
 
-const log = debug("fincademy:CreateReviewPage");
+const log = debug("fincademy:CourseReviewPage");
 
-export default function CreateReviewPage({ user }) {
+export default function CourseReviewPage({ user }) {
 	const { courseId } = useParams();
 	const [rating, setRating] = useState(0);
 	const [course, setCourse] = useState({});

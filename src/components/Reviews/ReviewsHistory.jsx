@@ -1,7 +1,7 @@
 import { ListGroup } from "react-bootstrap";
-import debug from "debug";
 import { Rating } from "@mui/material";
-const log = debug("fincademy:components:ReviewsHistory");
+// import debug from "debug";
+// const log = debug("fincademy:components:ReviewsHistory");
 
 export default function ReviewsHistory({ review }) {
 	return (

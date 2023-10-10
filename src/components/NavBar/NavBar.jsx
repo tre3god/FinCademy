@@ -3,7 +3,7 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import { logOut } from "../../utilities/users-service";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export default function NavBar({ user, setUser }) {
 	const handleLogout = () => {
@@ -16,41 +16,64 @@ export default function NavBar({ user, setUser }) {
 	return (
 		<>
 			{user ? (
-				<Navbar expand="lg" className="bg-body-tertiary">
+				<Navbar expand="lg" className="bg-body-tertiary" sticky="top">
 					<Container>
-						<div className="logo" onClick={() => navigate(`/`)}>
-							<img src="https://i.imgur.com/OZTTASE.png" width="50" height="50" style={{ marginRight: "20px"}} />
+						<div
+							className="logo"
+							onClick={() => navigate(`/`)}
+							style={{ textAlign: "left" }}>
+							<img
+								src="https://i.imgur.com/OZTTASE.png"
+								width="50"
+								height="50"
+								style={{ marginRight: "20px" }}
+							/>
 							<Navbar.Brand>FinCademy</Navbar.Brand>
 						</div>
 						<Navbar.Toggle aria-controls="basic-navbar-nav" />
 						<Navbar.Collapse id="basic-navbar-nav">
+							<Navbar.Collapse className="justify-content-center">
+								<Navbar.Text>Welcome back, {user.name}!</Navbar.Text>
+							</Navbar.Collapse>
 							<Nav className="me-auto">
 								<NavDropdown title="Your Account" id="basic-nav-dropdown">
-									<NavDropdown.Item onClick={() => navigate(`/users/${user._id}`)}>Profile</NavDropdown.Item>
-								<NavDropdown.Divider />
-										<NavDropdown.Item onClick={() => {
+									<NavDropdown.Item onClick={() => navigate("/profile")}>
+										Profile
+									</NavDropdown.Item>
+									<NavDropdown.Divider />
+									<NavDropdown.Item
+										onClick={() => {
 											navigate("/");
 											handleLogout();
 										}}>
-											Sign Out
-										</NavDropdown.Item>
+										Sign Out
+									</NavDropdown.Item>
 								</NavDropdown>
-								<Nav.Link onClick={() => navigate("/courses")}>Courses</Nav.Link>
+								<Nav.Link onClick={() => navigate("/courses")}>
+									Courses
+								</Nav.Link>
 							</Nav>
 						</Navbar.Collapse>
 					</Container>
 				</Navbar>
 			) : (
-				<Navbar expand="lg" className="bg-body-tertiary">
+				<Navbar expand="lg" className="bg-body-tertiary" sticky="top">
 					<Container>
 						<div className="logo" onClick={() => navigate(`/`)}>
-							<img src="https://i.imgur.com/OZTTASE.png" width="50" height="50" style={{ marginRight: "20px"}} />
+							<img
+								src="https://i.imgur.com/OZTTASE.png"
+								width="50"
+								height="50"
+								style={{ marginRight: "20px" }}
+							/>
 							<Navbar.Brand>FinCademy</Navbar.Brand>
 						</div>
 						<Navbar.Toggle aria-controls="basic-navbar-nav" />
 						<Navbar.Collapse id="basic-navbar-nav">
 							<Nav className="me-auto">
-								<Nav.Link onClick={() => navigate("/courses")}>Courses</Nav.Link>
+								<Nav.Link onClick={() => navigate("/courses")}>
+									Courses
+								</Nav.Link>
 								<Nav.Link onClick={() => navigate("/signup")}>Sign Up</Nav.Link>
 								<Nav.Link onClick={() => navigate("/login")}>Log In</Nav.Link>
 							</Nav>

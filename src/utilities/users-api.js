@@ -62,26 +62,12 @@ const findStudentCourses = async (userId) => {
 	}
 };
 
-export function enrollCourse(courseId) {
+const enrollCourse = (courseId) => {
 	return sendRequest(`${BASE_URL}/enroll`, "POST", courseId);
-}
+};
 
-const delCourse = async (userId, courseId) => {
-	const token = localStorage.getItem("token");
-	const response = await fetch(`${BASE_URL}/${userId}/unsubscribe`, {
-		method: "DELETE",
-		headers: {
-			Authorization: `Bearer ${token}`,
-			"Content-Type": "application/json",
-		},
-		body: JSON.stringify({ userId, courseId }),
-	});
-
-	if (response.ok) {
-		// Course unsubscribed successfully
-	} else {
-		throw new Error("Failed to unsubscribe from the course");
-	}
+const delCourse = async (courseId) => {
+	return sendRequest(`${BASE_URL}/unenroll/${courseId}`, "DELETE");
 };
 
 export {
@@ -89,5 +75,6 @@ export {
 	postUserLogin,
 	checkToken,
 	findStudentCourses,
+	enrollCourse,
 	delCourse,
 };

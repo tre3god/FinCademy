@@ -4,7 +4,6 @@ import * as courseService from "../../utilities/course-service";
 import { Button, Stack } from "react-bootstrap";
 import debug from "debug";
 import ReviewsHistory from "../../components/Reviews/ReviewsHistory";
-import { enrollCourse } from "../../utilities/users-service";
 
 const log = debug("fincademy:CoursesPage:CourseInfoPage");
 
@@ -29,16 +28,14 @@ export default function CourseInfoPage() {
 
 	const handleEnroll = async () => {
 		//* Push the course into the Student Model
-		await enrollCourse({ courseId });
+		// await
 	};
 
 	return (
 		<>
 			<h1>{course.courseTitle}</h1>
 			<Stack gap={3}>
-				<div className="p-2">
-					Course Long Description: {course.longDescription}
-				</div>
+				<div className="p-2">{course.longDescription}</div>
 				<div className="p-2">Course Price: {course.price}</div>
 				<div className="p-2">Course Reviews:</div>
 				{course.reviews?.map((review) => (

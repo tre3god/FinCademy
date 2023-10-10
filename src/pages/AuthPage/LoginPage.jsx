@@ -25,7 +25,7 @@ export default function LoginPage({ setUser }) {
 
 			setUser(user);
 			// navigate to user/:userId page (Student Profile)
-			navigate(`/users/${user._id}`);
+			navigate("/profile");
 		} catch (error) {
 			setError("Log In Failed - Try Again");
 		}

@@ -1,24 +1,22 @@
-
 import { useState } from "react";
 import { signUp } from "../../utilities/users-service";
 import { useNavigate } from "react-router-dom";
 import { Button, Form, Container, Row, Col } from "react-bootstrap";
 
 
-export default function SignupPage({setUser}) {
-    const [formData, setFormData] = useState({
+export default function SignupPage({ setUser }) {
+	const [formData, setFormData] = useState({
 		name: "",
 		email: "",
 		password: "",
 		confirm: "",
 		error: "",
 	});
-    const navigate = useNavigate()
-
+	const navigate = useNavigate();
 
 	const handleChange = (evt) => {
-        setFormData({
-            ...formData,
+		setFormData({
+			...formData,
 			[evt.target.name]: evt.target.value,
 			error: "",
 		});
@@ -29,16 +27,14 @@ export default function SignupPage({setUser}) {
 		try {
 			const user = await signUp(formData);
 			setUser(user);
-
-            // navigate to user/:userId page (Student Profile)
-            navigate(`/users/${user._id}`)
-
+			navigate("/profile");
 		} catch (error) {
 			setFormData({ error: "Sign up Failed - Try again" });
 		}
 	};
 
 	const disable = formData.password !== formData.confirm;
+
     return (
         <Container className="signuppage">
           <h1>Get started with a free account!</h1>

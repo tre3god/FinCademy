@@ -72,10 +72,10 @@ const findStudentCourses = async (userId) => {
 	return data;
 };
 
-export async function enrollCourse(courseId) {
+const enrollCourse = async (courseId) => {
 	const data = await userApi.enrollCourse(courseId);
 	return data;
-}
+};
 
 const delCourse = async (courseId) => {
 	const data = await userApi.delCourse(courseId);
@@ -90,5 +90,6 @@ export {
 	login,
 	checkToken,
 	findStudentCourses,
+	enrollCourse,
 	delCourse,
 };

@@ -34,6 +34,7 @@ export default function SignupPage({ setUser }) {
 	};
 
 	const disable = formData.password !== formData.confirm;
+
     return (
         <Container className="signuppage">
           <h1>Get started with a free account!</h1>

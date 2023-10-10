@@ -1,7 +1,8 @@
 const express = require("express");
 const router = express.Router();
 const quizCtrl = require("../../controllers/api/quizCtrl");
+const ensuredLoggedIn = require("../../config/ensureLoggedIn");
 
-router.get("/:courseId", quizCtrl.getQuiz);
+router.get("/:courseId", ensuredLoggedIn, quizCtrl.getQuiz);
 
 module.exports = router;

@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import * as courseService from "../../utilities/course-service";
-import { Button, Stack } from "react-bootstrap";
+import { Button, Stack, Col, Row, Container } from "react-bootstrap";
 import debug from "debug";
 import ReviewsHistory from "../../components/Reviews/ReviewsHistory";
 import { enrollCourse } from "../../utilities/users-service";
+import { auto } from "@popperjs/core";
 
 const log = debug("fincademy:CoursesPage:CourseInfoPage");
 
@@ -33,19 +34,42 @@ export default function CourseInfoPage() {
 	};
 
 	return (
-		<>
-			<h1>{course.courseTitle}</h1>
-			<Stack gap={3}>
-				<div className="p-2">{course.longDescription}</div>
-				<div className="p-2">Course Price: {course.price}</div>
-				<div className="p-2">Course Reviews:</div>
-				{course.reviews?.map((review) => (
-					<ReviewsHistory key={review._id} review={review} />
-				))}
-				<Button className="col-md-5 mx-auto" onClick={handleEnroll}>
+		<Container>
+			<Row>
+				<Col>
+					<img src={course.img} style={{ width: '100%', height: 'auto', maxHeight: "450px" }} />
+				</Col>
+			</Row>
+			<Row>
+				<Col>
+					<h1>{course.courseTitle}</h1>
+				</Col>
+			</Row>
+			<Row>
+				<Col>
+					<h2>Description</h2>
+					<div className="p-2">{course.longDescription}</div>
+				</Col>
+			</Row>
+			<Row>
+				<Col>
+					<h2>Price</h2>
+					<div className="p-2">Course Price: ${course.price}</div>
+				</Col>
+			</Row>
+			<Row>
+				<Col>
+					<h2>Reviews</h2>
+					{course.reviews?.map((review) => (
+						<ReviewsHistory key={review._id} review={review} />
+					))}
+				</Col>
+			</Row>
+			<Row className="justify-content-center">
+				<Button className="col-md-5" onClick={handleEnroll}>
 					Enroll
 				</Button>
-			</Stack>
-		</>
+			</Row>
+		</Container>
 	);
 }

@@ -56,12 +56,14 @@ export default function QuizPage() {
           <div>
             {quiz[idx]?.answers.map((answer, index) => (
               <>
+              <div className="mb-2">
               <Button
                 key={answer._id}
-                onClick={() => handleAnswerOptionClick(index)}
+                onClick={() => handleAnswerOptionClick(index)} size="sm"
               >
                 {answer}
               </Button><br />
+              </div>
               </>
             ))}
           </div>

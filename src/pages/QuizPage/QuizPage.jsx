@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { Button, Spinner, Container} from "react-bootstrap";
 import * as quizService from "../../utilities/quiz-service";
+import * as usersService from "../../utilities/users-service";
 
 export default function QuizPage() {
   const [quiz, setQuiz] = useState([]);
@@ -53,18 +54,22 @@ export default function QuizPage() {
     }
   };
 
+  const handleExit = async (event) => {
+    event.preventDefault();
+    await usersService.updateQuizScore(score, courseId);
+    navigate("/profile");
+  }
+
   return (
     <div>
       {showScore ? (
         <>
-        <Container className="d-flex justify-content-center">
+        <Container> className="d-flex justify-content-center">
           <h3>
             You scored {score} out of {quiz.length}.
           </h3>
-          </Container>
           <br />
-          <Container className="d-flex justify-content-center">
-          <Button size="sm" onClick={() => navigate("/profile")}>
+          <Button size="sm" onClick={handleExit}>
             Exit Course
           </Button>
           </Container>

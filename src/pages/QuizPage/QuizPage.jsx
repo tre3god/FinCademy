@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { Button } from "react-bootstrap";
+import { Button, Spinner } from "react-bootstrap";
 import * as quizService from "../../utilities/quiz-service";
 
 export default function QuizPage() {
@@ -8,12 +8,15 @@ export default function QuizPage() {
   const [idx, setIdx] = useState(0);
   const [score, setScore] = useState(0);
   const [showScore, setShowScore] = useState(false);
+  const [status, setStatus] = useState("idle");
   const { courseId } = useParams();
 
   useEffect(() => {
     const fetchQuiz = async () => {
       try {
+        setStatus("loading");
         const data = await quizService.getQuiz(courseId);
+        setStatus("success");
         setQuiz(data);
       } catch (error) {
         console.log(error);
@@ -21,6 +24,16 @@ export default function QuizPage() {
     };
     fetchQuiz();
   }, [courseId]);
+
+  const isLoading = status === "loading";
+
+  if (isLoading) {
+    return (
+      <Spinner animation="border" variant="success" role="status">
+        <span className="visually-hidden">Loading...</span>
+      </Spinner>
+    );
+  }
 
   // Quiz adapted from https://github.com/chrisblakely01/quiz-app
 
@@ -56,12 +69,16 @@ export default function QuizPage() {
           <div>
             {quiz[idx]?.answers.map((answer, index) => (
               <>
-              <Button
-                key={answer._id}
-                onClick={() => handleAnswerOptionClick(index)}
-              >
-                {answer}
-              </Button><br />
+                <div className="mb-2">
+                  <Button
+                    key={answer._id}
+                    onClick={() => handleAnswerOptionClick(index)}
+                    size="sm"
+                  >
+                    {answer}
+                  </Button>
+                  <br />
+                </div>
               </>
             ))}
           </div>

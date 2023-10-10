@@ -1,5 +1,5 @@
 const User = require("../../models/User");
-// const debug = require("debug")("fincademy:controllers:enrollsCtrl");
+const debug = require("debug")("fincademy:controllers:enrollsCtrl");
 
 const enroll = async (req, res) => {
 	const { courseId } = req.body;
@@ -34,7 +34,7 @@ const unenroll = async (req, res) => {
 		user.enrolledCourses.splice(enrolledIndex, 1);
 
 		await user.save();
-		res.json({ message: "Successfully unenrolled from the course" });
+		res.json({ user, message: "Successfully unenrolled from the course" });
 	} else {
 		res.status(404).json({ error: "Course enrollment not found." });
 	}

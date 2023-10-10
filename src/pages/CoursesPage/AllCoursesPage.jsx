@@ -18,6 +18,7 @@ export default function AllCoursesPage() {
 		fetchCourses();
 	}, []);
 	return (
+	<>
 		<Container className="d-flex align-items-center justify-content-center" style={{ minHeight: '100vh' }}>
 			<Row className="justify-content-md-center">
 				{allCourses.map((course, index) => {
@@ -29,6 +30,7 @@ export default function AllCoursesPage() {
 				})}
 			</Row>
 		</Container>
+	</>
 	);
 }
 

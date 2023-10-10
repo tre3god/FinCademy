@@ -79,7 +79,7 @@ const enrollCourse = async (courseId) => {
 
 const delCourse = async (courseId) => {
 	const data = await userApi.delCourse(courseId);
-	return data;
+	return data.user;
 };
 
 export {

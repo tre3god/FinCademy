@@ -56,13 +56,13 @@ export default function CourseInfoPage({ user, setUser }) {
 			</Row>
 			<Row>
 				<Col>
-					<h2>Price</h2>
+					<h3>Price</h3>
 					<div className="p-2">Course Price: ${course.price}</div>
 				</Col>
 			</Row>
 			<Row>
 				<Col>
-					<h2>Reviews</h2>
+					<h3>Reviews</h3>
 					{course.reviews?.map((review) => (
 						<ReviewsHistory key={review._id} review={review} />
 					))}

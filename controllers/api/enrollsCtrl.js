@@ -1,10 +1,9 @@
 const User = require("../../models/User");
-const debug = require("debug")("fincademy:controllers:enrollsCtrl");
+// const debug = require("debug")("fincademy:controllers:enrollsCtrl");
 
 const enroll = async (req, res) => {
 	const { courseId } = req.body;
 	const user = await User.findById(req.user._id);
-	debug(user);
 
 	const isEnrolled = user.enrolledCourses.some(
 		(enrollment) => enrollment.course.toString() === courseId,
@@ -17,8 +16,28 @@ const enroll = async (req, res) => {
 		user.enrolledCourses.push(newEnrollment);
 
 		await user.save();
+		res.status(200).json({ message: "Enrollment successful." });
+	} else {
+		res.status(403).json({ error: "You are already enrolled in this course." });
 	}
-	res.json({ user });
 };
 
-module.exports = { enroll };
+const unenroll = async (req, res) => {
+	const { courseId } = req.params;
+	const user = await User.findById(req.user._id);
+
+	const enrolledIndex = user.enrolledCourses.findIndex(
+		(enrollment) => enrollment.course.toString() === courseId,
+	);
+
+	if (enrolledIndex !== -1) {
+		user.enrolledCourses.splice(enrolledIndex, 1);
+
+		await user.save();
+		res.json({ message: "Successfully unenrolled from the course" });
+	} else {
+		res.status(404).json({ error: "Course enrollment not found." });
+	}
+};
+
+module.exports = { enroll, unenroll };

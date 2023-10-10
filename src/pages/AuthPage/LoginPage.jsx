@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { login } from "../../utilities/users-service";
 import { Link, useNavigate } from "react-router-dom";
+import { Button, Form, Container, Row, Col } from "react-bootstrap";
+
 
 export default function LoginPage({ setUser }) {
 	const [credentials, setCredentials] = useState({
@@ -30,40 +32,47 @@ export default function LoginPage({ setUser }) {
 	};
 
 	return (
-		<>
-			<h1>Log in to your account</h1>
-			<div>
-				<div className="form-container">
-					<form autoComplete="off" onSubmit={handleSubmit}>
-						<label>Email</label>
-						<input
-							type="text"
-							name="email"
-							value={credentials.email}
-							placeholder="Enter a valid email address"
-							onChange={handleChange}
-							required
-						/>
-						<br></br>
-						<label>Password</label>
-						<input
-							type="password"
-							name="password"
-							value={credentials.password}
-							placeholder="Enter password"
-							onChange={handleChange}
-							required
-						/>
-						<br></br>
-						<p className="error-message">&nbsp;{error}</p>
-
-						<button type="submit">LOG IN</button>
-					</form>
-				</div>
-			</div>
-			<div>
-				Dont have an account? <Link to="/signup">Register</Link>
-			</div>
-		</>
-	);
+    <Container className="login-page">
+      <h1>Log in to your account</h1>
+      <Row>
+        <Col md={6}>
+          <div className="form-container">
+            <Form autoComplete="off" onSubmit={handleSubmit}>
+              <Form.Group>
+                <Form.Label>Email</Form.Label>
+                <Form.Control
+                  type="text"
+                  name="email"
+                  value={credentials.email}
+                  placeholder="Enter a valid email address"
+                  onChange={handleChange}
+                  required
+                />
+              </Form.Group>
+              <Form.Group>
+                <Form.Label>Password</Form.Label>
+                <Form.Control
+                  type="password"
+                  name="password"
+                  value={credentials.password}
+                  placeholder="Enter password"
+                  onChange={handleChange}
+                  required
+                />
+              </Form.Group>
+              <p className="error-message">&nbsp;{error}</p>
+              <Button type="submit">LOG IN</Button>
+            </Form>
+          </div>
+        </Col>
+      </Row>
+      <Row>
+        <Col md={6}>
+          <div className="register-link">
+            Don't have an account? <Link to="/signup">Register</Link>
+          </div>
+        </Col>
+      </Row>
+    </Container>
+  );
 }

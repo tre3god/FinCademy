@@ -20,7 +20,7 @@ export default function StudentProfile({ user }) {
 			<Container className="mt-5">
 				<Row>
 					<Col>
-						<Spinner animation="border" role="status">
+						<Spinner variant="success" animation="border" role="status">
 							<span className="sr-only"></span>
 						</Spinner>
 						<div>Loading...</div>

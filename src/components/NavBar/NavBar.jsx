@@ -3,7 +3,7 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import { logOut } from "../../utilities/users-service";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 export default function NavBar({ user, setUser }) {
 	const handleLogout = () => {
@@ -18,16 +18,14 @@ export default function NavBar({ user, setUser }) {
 			{user ? (
 				<Navbar expand="lg" className="bg-body-tertiary" sticky="top">
 					<Container>
-							<Navbar.Brand className="logo"
-							onClick={() => navigate(`/`)} aria-controls="basic-navbar-nav">
+						<Link to="/">
 								<img
-								src="https://i.imgur.com/OZTTASE.png"
-								width="50"
-								height="50"
+								src="https://i.imgur.com/ih08rsx.png"
+								width="auto"
+								height="75"
 								style={{ marginRight: "20px" }}
 								/>
-								FinCademy
-							</Navbar.Brand>
+						</Link>
 						<Navbar.Toggle aria-controls="basic-navbar-nav" />
 						<Navbar.Collapse id="basic-navbar-nav">
 							<Navbar.Collapse className="justify-content-center">

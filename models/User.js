@@ -19,7 +19,7 @@ const userSchema = new Schema(
 		enrolledCourses: [
 			{
 				course: { type: mongoose.Schema.Types.ObjectId, ref: "Course" },
-				completed: { type: Boolean, default: false },
+				quizScore: { type: Number, min: 0, max: 5, default: null },
 			},
 		],
 	},

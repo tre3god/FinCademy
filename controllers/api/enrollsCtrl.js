@@ -16,7 +16,7 @@ const enroll = async (req, res) => {
 		user.enrolledCourses.push(newEnrollment);
 
 		await user.save();
-		res.status(200).json({ message: "Enrollment successful." });
+		res.status(200).json({ user, message: "Enrollment successful." });
 	} else {
 		res.status(403).json({ error: "You are already enrolled in this course." });
 	}

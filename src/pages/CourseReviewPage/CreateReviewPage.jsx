@@ -11,7 +11,7 @@ const log = debug("fincademy:CourseReviewPage");
 
 export default function CourseReviewPage({ user }) {
 	const { courseId } = useParams();
-	const [rating, setRating] = useState(0);
+	const [rating, setRating] = useState(3);
 	const [course, setCourse] = useState({});
 	const [isEditModalOpen, setIsEditModalOpen] = useState(false);
 	const navigate = useNavigate();
@@ -88,6 +88,8 @@ export default function CourseReviewPage({ user }) {
 						<EditReviewModal
 							show={isEditModalOpen}
 							onHide={() => setIsEditModalOpen(false)}
+							review={userLeftReview}
+							courseId={courseId}
 						/>
 					</Form>
 				</>

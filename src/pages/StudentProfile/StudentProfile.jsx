@@ -4,6 +4,7 @@ import * as userService from "../../utilities/users-service";
 import { useEffect } from "react";
 
 export default function StudentProfile({ user, setUser }) {
+
 	// useEffect(() => {
 	// 	async function fetchUserData() {
 	// 		try {
@@ -26,7 +27,7 @@ export default function StudentProfile({ user, setUser }) {
 		try {
 			const updatedUser = await userService.delCourse(courseId);
 			console.log("old", updatedUser);
-			setUser(updatedUser);
+			setUser(updatedUser.user);
 			console.log("new", user);
 		} catch (error) {
 			console.log(error);

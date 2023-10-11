@@ -1,5 +1,5 @@
 import debug from "debug";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Route, Routes } from "react-router-dom";
 import { getUser } from "../../utilities/users-service";
 import LoginPage from "../AuthPage/LoginPage";
@@ -20,9 +20,22 @@ localStorage.debug = "fincademy:*";
 log("Start app");
 
 export default function App() {
-	const [user, setUser] = useState(getUser());
 
-	const updateUser = (user) => setUser(user);
+	// get state from session storage, if dont have then go get token
+	const [user, setUser] = useState(() => {
+		const storedUser = window.sessionStorage.getItem("user");
+		return storedUser ? JSON.parse(storedUser) : getUser();
+	});
+	
+	const updateUser = (user) => {
+		setUser(user);
+	};
+
+	// https://spacejelly.dev/posts/how-to-save-state-to-localstorage-persist-on-refresh-with-react-js/
+	// whenever user state changes, set state in session storage
+	useEffect(() => {
+		window.sessionStorage.setItem("user", JSON.stringify(user));
+	}, [user]);
 
 	return (
 		<>

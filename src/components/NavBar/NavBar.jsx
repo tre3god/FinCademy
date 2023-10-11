@@ -58,12 +58,11 @@ export default function NavBar({ user, setUser }) {
 						<Navbar.Brand className="logo"
 							onClick={() => navigate(`/`)} aria-controls="basic-navbar-nav">
 								<img
-								src="https://i.imgur.com/OZTTASE.png"
-								width="50"
-								height="50"
+								src="https://i.imgur.com/ih08rsx.png"
+								width="auto"
+								height="75"
 								style={{ marginRight: "20px" }}
 								/>
-								FinCademy
 						</Navbar.Brand>
 						<Navbar.Toggle aria-controls="basic-navbar-nav" />
 						<Navbar.Collapse id="basic-navbar-nav">

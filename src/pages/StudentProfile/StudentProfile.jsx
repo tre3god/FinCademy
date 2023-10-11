@@ -26,7 +26,7 @@ export default function StudentProfile({ user, setUser }) {
 		try {
 			const updatedUser = await userService.delCourse(courseId);
 			console.log("old", updatedUser);
-			setUser(updatedUser);
+			setUser(updatedUser.user);
 			console.log("new", user);
 		} catch (error) {
 			console.log(error);

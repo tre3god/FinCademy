@@ -4,22 +4,19 @@ import * as userService from "../../utilities/users-service";
 import { useEffect } from "react";
 
 export default function StudentProfile({ user, setUser }) {
+	useEffect(() => {
+		async function fetchUserData() {
+			try {
+				const updatedUser = await userService.findStudentCourses();
+				setUser(updatedUser.user);
+			} catch (error) {
+				console.log(error);
+			}
+		}
 
-	// useEffect(() => {
-	// 	async function fetchUserData() {
-	// 		try {
-	// 			const updatedUser = await userService.getUser();
-	// 			setUser((prevUser) => ({
-	// 				...prevUser,
-	// 				...updatedUser,
-	// 			}));
-	// 		} catch (error) {
-	// 			console.log(error);
-	// 		}
-	// 	}
-
-	// 	fetchUserData();
-	// }, [setUser]);
+		fetchUserData();
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, []);
 
 	const handleUnsub = async (event) => {
 		const courseId = event.currentTarget.getAttribute("course");
@@ -59,15 +56,15 @@ export default function StudentProfile({ user, setUser }) {
 					<Row>
 						<Col sm={1}>{index + 1}.</Col>
 						<Col sm={3}>
-							<Link to={`/courses/${course.course}/content`}>
-								{course.course}
+							<Link to={`/courses/${course.course._id}/content`}>
+								{course.course.courseTitle}
 							</Link>
 						</Col>
 						<Col sm={3}>
 							<span>Quiz score: {course.quizScore}/5</span>
 						</Col>
 						<Col sm={3}>
-							<Link to={`/courses/${course.course}/review`}>
+							<Link to={`/courses/${course.course._id}/review`}>
 								<Button variant="primary">Review</Button>
 							</Link>
 						</Col>
@@ -75,7 +72,7 @@ export default function StudentProfile({ user, setUser }) {
 							<Button
 								variant="danger"
 								onClick={handleUnsub}
-								course={course.course}>
+								course={course.course._id}>
 								Unenroll
 							</Button>
 						</Col>

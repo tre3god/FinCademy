@@ -46,20 +46,8 @@ const checkToken = async () => {
 	}
 };
 
-const findStudentCourses = async (userId) => {
-	const token = localStorage.getItem("token");
-
-	const response = await fetch(`${BASE_URL}/${userId}`, {
-		method: "GET",
-		headers: {
-			Authorization: `Bearer ${token}`,
-		},
-	});
-	if (response.ok) {
-		return await response.json();
-	} else {
-		throw new Error();
-	}
+const findStudentCourses = async () => {
+	return sendRequest(`${BASE_URL}`);
 };
 
 const enrollCourse = (courseId) => {
@@ -71,8 +59,8 @@ const delCourse = async (courseId) => {
 };
 
 const updateQuizScore = (quizScore, courseId) => {
-	return sendRequest(`${BASE_URL}/${courseId}/quiz-score`, "PATCH", quizScore)
-}
+	return sendRequest(`${BASE_URL}/${courseId}/quiz-score`, "PATCH", quizScore);
+};
 
 export {
 	postUserData,

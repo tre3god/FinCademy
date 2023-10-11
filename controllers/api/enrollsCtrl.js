@@ -3,10 +3,13 @@ const debug = require("debug")("fincademy:controllers:enrollsCtrl");
 
 const enroll = async (req, res) => {
 	const { courseId } = req.body;
-	const user = await User.findById(req.user._id);
+	const user = await User.findById(req.user._id).populate(
+		"enrolledCourses.course",
+	);
+	debug(user);
 
 	const isEnrolled = user.enrolledCourses.some(
-		(enrollment) => enrollment.course.toString() === courseId,
+		(enrollment) => enrollment.course._id.toString() === courseId,
 	);
 	if (!isEnrolled) {
 		const newEnrollment = {
@@ -24,10 +27,12 @@ const enroll = async (req, res) => {
 
 const unenroll = async (req, res) => {
 	const { courseId } = req.params;
-	const user = await User.findById(req.user._id);
+	const user = await User.findById(req.user._id).populate(
+		"enrolledCourses.course",
+	);
 
 	const enrolledIndex = user.enrolledCourses.findIndex(
-		(enrollment) => enrollment.course.toString() === courseId,
+		(enrollment) => enrollment.course._id.toString() === courseId,
 	);
 
 	if (enrolledIndex !== -1) {

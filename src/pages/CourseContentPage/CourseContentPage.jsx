@@ -40,10 +40,12 @@ export default function CourseContentPage() {
       <Row className="mt-4">
         <Col className="text-center d-flex justify-content-center">  {/* Added d-flex and justify-content-center */}
           <Link to={`/quiz/${courseId}`}>
-            <Button>Take the quiz now!</Button>
+            <Button variant="success">Take the quiz now!</Button>
           </Link>
         </Col>
       </Row>
+      <br />
+      <br />
     </Container>
   );
 }

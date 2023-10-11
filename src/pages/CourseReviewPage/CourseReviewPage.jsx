@@ -34,7 +34,7 @@ export default function CourseReviewPage({ user }) {
 			}
 		};
 		fetchContent();
-	}, [courseId]);
+	}, [courseId, isEditModalOpen]);
 
 	const handleSubmit = async (evt) => {
 		evt.preventDefault();
@@ -82,6 +82,12 @@ export default function CourseReviewPage({ user }) {
 							<Form.Label>Rating</Form.Label>
 							<Rating name="rating" value={userLeftReview.rating} readOnly />
 						</Form.Group>
+						<Button
+							variant="secondary"
+							className="me-2"
+							onClick={() => navigate("/profile")}>
+							Back to Profile
+						</Button>
 						<Button variant="primary" onClick={() => setIsEditModalOpen(true)}>
 							Edit Review
 						</Button>

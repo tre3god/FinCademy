@@ -61,7 +61,9 @@ export default function StudentProfile({ user, setUser }) {
 							</Link>
 						</Col>
 						<Col sm={3}>
-							<span>Quiz score: {course.quizScore}/5</span>
+							{course.quizScore === null
+								? ""
+								: `Quiz score: ${course.quizScore}/5`}
 						</Col>
 						<Col sm={3}>
 							<Link to={`/courses/${course.course._id}/review`}>

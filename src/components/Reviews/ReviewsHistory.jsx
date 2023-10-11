@@ -9,15 +9,18 @@ export default function ReviewsHistory({ review }) {
 	const createdAt = moment(review.createdAt).fromNow();
 	const updatedAt = moment(review.updatedAt).fromNow();
 	return (
-		<ListGroup>
-			<ListGroup.Item>{review.user.name}</ListGroup.Item>
-			<ListGroup.Item className="d-flex">
-				<Rating name="rating" value={review.rating} readOnly />
-				<span className="ms-3">
-					{isUpdated ? `Edited: ${updatedAt}` : `Created: ${createdAt}`}
-				</span>
-			</ListGroup.Item>
-			<ListGroup.Item>{review.comments}</ListGroup.Item>
-		</ListGroup>
+		<>
+			<ListGroup>
+				<ListGroup.Item>{review.user.name}</ListGroup.Item>
+				<ListGroup.Item className="d-flex">
+					<Rating name="rating" value={review.rating} readOnly />
+					<span className="ms-3">
+						{isUpdated ? `Edited: ${updatedAt}` : `Created: ${createdAt}`}
+					</span>
+				</ListGroup.Item>
+				<ListGroup.Item>{review.comments}</ListGroup.Item>
+			</ListGroup>
+			<br />
+		</>
 	);
 }

@@ -20,7 +20,7 @@ Financial literacy is more crucial than ever in today's fast-paced world. FinCad
 
 ## Planning
 
-- **Trell Board**: The team listed out various user stories for the e-learning platform on the [Trello board](https://trello.com/b/dUDCGMn6/project-3). The user stories are sorted out into the MVP as well the Icebox. As progress was made on the e-learning platform, the user stories were sorted into their right locations respectively (WIP/completed).
+- **Trello Board**: The team listed out various user stories for the e-learning platform on the [Trello board](https://trello.com/b/dUDCGMn6/project-3). The user stories are sorted out into the MVP as well the Icebox. As progress was made on the e-learning platform, the user stories were sorted into their right locations respectively (WIP/completed).
 
 - **Wireframe**: Based on the user stories which were listed out by the team, the team then created a [Figma wireframe](https://www.figma.com/file/6gmkSZuAMDI25RBv8hmiaE/Project-3---E-Learning-Platform-for-Financial-Literacy?type=whiteboard&node-id=0-1&t=5eElqKAEfjk6i8ll-0) to conceptualise how the FinCademy website would look like. During the creation of the website, several changes were made to the design but the wireframe served as a useful guide for the foundation that needed to be built.
 
@@ -49,7 +49,7 @@ Financial literacy is more crucial than ever in today's fast-paced world. FinCad
 
 ## Deployment
 
-Jump into the financial literacy e-learning world of FinCademy at https://fincademy.onrender.com/ !
+Jump into the financial literacy e-learning world of FinCademy at https://fincademy.onrender.com/
 
 ---
 
@@ -68,6 +68,8 @@ Jump into the financial literacy e-learning world of FinCademy at https://fincad
 
 ## Future Developments
 
-- **Different type of users**: Course creators which can use the platform to create and market their own courses.
+- **Different types of users**: Course creators which can use the platform to create and market their own courses.
+
 - **Course creation template**: For course creators to easily create their own courses to be put on the e-learning platform.
+
 - **Subscription payments**: Upon expressing their desire to enrol for a course, students will be re-directed to make payment for the course. On the other end, course creators will be able to generate revenue from their courses.

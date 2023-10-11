@@ -66,6 +66,7 @@ export default function LoginPage({ setUser }) {
           </div>
         </Col>
       </Row>
+      <br />
       <Row>
         <Col md={6}>
           <div className="register-link">

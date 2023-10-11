@@ -7,9 +7,13 @@ import ReactMarkdown from "react-markdown";
 
 const log = debug("fincademy:CourseContentPage:CourseContentPage");
 
-export default function CourseContentPage() {
+export default function CourseContentPage({ user }) {
   const [course, setCourse] = useState({});
   const { courseId } = useParams();
+  const userCourses = user.enrolledCourses;
+  const index = userCourses.findIndex(
+    (userCourse) => userCourse.course._id === courseId
+  );
 
   useEffect(() => {
     const fetchContent = async () => {
@@ -23,7 +27,9 @@ export default function CourseContentPage() {
     fetchContent();
   }, [courseId]);
 
-  const parsedContent = course.content ? course.content.replace(/\\n/g,"\n") : "";
+  const parsedContent = course.content
+    ? course.content.replace(/\\n/g, "\n")
+    : "";
 
   return (
     <Container className="mt-4" style={{ maxWidth: "63%" }}>
@@ -38,9 +44,15 @@ export default function CourseContentPage() {
         </Col>
       </Row>
       <Row className="mt-4">
-        <Col className="text-center d-flex justify-content-center">  {/* Added d-flex and justify-content-center */}
+        <Col className="text-center d-flex justify-content-center">
+          {" "}
+          {/* Added d-flex and justify-content-center */}
           <Link to={`/quiz/${courseId}`}>
-            <Button variant="success">Take the quiz now!</Button>
+            {userCourses[index]?.quizScore === null ? (
+              <Button variant="success">Take the quiz now!</Button>
+            ) : (
+              <Button variant="success">Try the quiz again!</Button>
+            )}
           </Link>
         </Col>
       </Row>

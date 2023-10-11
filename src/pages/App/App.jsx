@@ -60,7 +60,7 @@ export default function App() {
 							/>
 							<Route
 								path="/courses/:courseId/content"
-								element={<CourseContentPage />}
+								element={<CourseContentPage user={user} />}
 							/>
 							<Route path="/quiz/:courseId" element={<QuizPage />} />
 						</Routes>

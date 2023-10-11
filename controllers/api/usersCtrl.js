@@ -45,13 +45,14 @@ const checkToken = (req, res) => {
 };
 
 const getOne = async (req, res) => {
-	const { userId } = req.params;
 	try {
-		const student = await User.findById(userId);
-		if (!student) {
+		const user = await User.findById(req.user._id).populate(
+			"enrolledCourses.course",
+		);
+		if (!user) {
 			return res.status(404).json({ error: "User not found" });
 		}
-		res.json({ student });
+		res.json({ user });
 	} catch (error) {
 		res.status(500).json({ error: "Internal Server Error" });
 	}
@@ -64,14 +65,14 @@ const updateQuizScore = async (req, res) => {
 		const courses = user.enrolledCourses;
 		const index = courses.findIndex(
 			(course) => course.course.toString() === req.params.courseId,
-		)
+		);
 		courses[index].quizScore = parseInt(req.body.quizScore);
 		await user.save(); // an array
 		// const newQuizScore = await courses.findByIdAndUpdate({course: req.params.courseId}, {quizScore: req.body});
-		res.status(200).json({courses});
+		res.status(200).json({ courses });
 	} catch {
-		res.status(500).json({ error: "It should just work" })
+		res.status(500).json({ error: "It should just work" });
 	}
-}
+};
 
 module.exports = { create, login, checkToken, getOne, updateQuizScore };

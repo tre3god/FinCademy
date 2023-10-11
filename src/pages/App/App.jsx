@@ -12,7 +12,7 @@ import AllCoursesPage from "../CoursesPage/AllCoursesPage";
 import CourseContentPage from "../CourseContentPage/CourseContentPage";
 import QuizPage from "../QuizPage/QuizPage";
 import "./App.css";
-import CourseReviewPage from "../CourseReviewPage/CreateReviewPage";
+import CourseReviewPage from "../CourseReviewPage/CourseReviewPage";
 
 const log = debug("fincademy:src:App");
 localStorage.debug = "fincademy:*";

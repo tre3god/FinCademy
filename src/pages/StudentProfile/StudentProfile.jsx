@@ -4,6 +4,7 @@ import * as userService from "../../utilities/users-service";
 import { useEffect } from "react";
 
 export default function StudentProfile({ user, setUser }) {
+
 	// useEffect(() => {
 	// 	async function fetchUserData() {
 	// 		try {

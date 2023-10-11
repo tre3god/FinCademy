@@ -20,10 +20,9 @@ export default function TempLandingPage() {
       <div className="row">
         <div className="col-lg-6 col-12">
           <div className="header-intro">
-            <h4>Lorem Ipsum is simply dummy text...</h4>
+            <h4>Welcome to FinCademy!</h4>
             <p>
-              Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
-              industry's standard dummy text ever since. 
+				FinCademy is an all-accessible, all-encompassing e-learning platform for financial literacy guaranteed to make your financial management skills +69,420.
             </p>
           </div>
         </div>
@@ -45,28 +44,29 @@ export default function TempLandingPage() {
 				<div className="col-12">
 					<h5>Our Services</h5>
 					<h2>Services We Provide</h2>
-					<p>Sharing financial literacy tips and tricks to get you through your peasantlike lifestyles.</p>
+					<p>Sharing financial literacy tips and tricks to get you through your peasant-like lifestyles.</p>
 				</div>
 			</div>
 		</div>
 		<div className="row">
 			<div className="col-lg-4 col-md-6 col-12">
 				<h3>01</h3>
-				<h4>Course creation</h4>
-				<p>For people who wish to share their knowledge</p>
-			</div>
-			<div className="col-lg-4 col-md-6 col-12">
-				<h3>02</h3>
-				<h4>Subscription based learning</h4>
+				<h4>Subscription-based learning</h4>
 				<p>Pay money to learn to make money</p>
 			</div>
 			<div className="col-lg-4 col-md-6 col-12">
+				<h3>02</h3>
+				<h4>Track your progress</h4>
+				<p>An easy to access profile page where you can track which courses you have not completed. Start making money today!</p>
+			</div>
+			<div className="col-lg-4 col-md-6 col-12">
 				<h3>03</h3>
-				<h4>Improve your digital footprint</h4>
-				<p>Spread your name throughout the financial market circle</p>
+				<h4>Improve your financial literacy</h4>
+				<p>Now you can flex on all your aunties and uncles that you know how to manage money</p>
 			</div>
 		</div>
 	</div>
+	<br />
 	</>
   );
 }

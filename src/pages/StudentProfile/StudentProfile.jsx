@@ -60,16 +60,22 @@ export default function StudentProfile({ user, setUser }) {
 								{course.course.courseTitle}
 							</Link>
 						</Col>
-						<Col sm={3}>
-							{course.quizScore === null
-								? ""
-								: `Quiz score: ${course.quizScore}/5`}
-						</Col>
-						<Col sm={3}>
-							<Link to={`/courses/${course.course._id}/review`}>
-								<Button variant="primary">Review</Button>
-							</Link>
-						</Col>
+
+						{course.quizScore === null ? (
+							<>
+								<Col sm={5}>Complete the Course & Quiz to leave a Review</Col>
+							</>
+						) : (
+							<>
+								<Col sm={4}>Quiz score: {course.quizScore}/5</Col>
+								<Col sm={1}>
+									<Link to={`/courses/${course.course._id}/review`}>
+										<Button variant="primary">Review</Button>
+									</Link>
+								</Col>
+							</>
+						)}
+
 						<Col sm={2}>
 							<Button
 								variant="danger"

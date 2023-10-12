@@ -60,7 +60,7 @@ export default function StudentProfile({ user, setUser }) {
 				<div key={index} className="mb-2 text-center">
 					<Row>
 						<Col sm={1}>{index + 1}.</Col>
-						<Col sm={3}>
+						<Col sm={5}>
 							<Link to={`/courses/${course.course._id}/content`}>
 								{course.course.courseTitle}
 							</Link>
@@ -68,7 +68,7 @@ export default function StudentProfile({ user, setUser }) {
 
 						{course.quizScore === null ? (
 							<>
-								<Col sm={5}>Complete the Course & Quiz to leave a Review</Col>
+								<Col sm={4}>Complete the Course & Quiz to leave a Review</Col>
 							</>
 						) : (
 							<>
@@ -81,7 +81,7 @@ export default function StudentProfile({ user, setUser }) {
 							</>
 						)}
 
-						<Col sm={2}>
+						<Col sm={1}>
 							<Button
 								variant="danger"
 								onClick={handleUnsub}

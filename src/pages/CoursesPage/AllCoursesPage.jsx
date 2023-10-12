@@ -2,29 +2,27 @@ import CourseCard from "../../components/CourseCard/CourseCard";
 import { useState, useEffect } from "react";
 import { Col, Row, Container, Spinner, Pagination } from "react-bootstrap";
 import debug from "debug";
-import { averageRating } from "../../helper/coursesHelper";
+import { useLocation, useNavigate } from "react-router-dom";
+import { getCourses } from "../../utilities/course-service";
 
 const log = debug("fincademy:AllCoursesPage");
 
 export default function AllCoursesPage() {
+	const location = useLocation();
+	const navigate = useNavigate();
 	const [allCourses, setAllCourses] = useState([]);
 	const [loading, setLoading] = useState(true);
 	const [page, setPage] = useState(1);
 	const [totalPages, setTotalPages] = useState(1);
-	const pageSize = 8;
 
 	useEffect(() => {
 		async function fetchCourses() {
 			try {
-				const res = await fetch(
-					`/api/courses?page=${page}&pageSize=${pageSize}`,
-				);
-				const data = await res.json();
+				const queryParams = new URLSearchParams(location.search);
+				const data = await getCourses(queryParams);
 				log(data);
-				const ratedCourses = averageRating(data.allCourses);
-				log(ratedCourses);
-				setAllCourses(ratedCourses);
-				setTotalPages(Math.ceil(data.totalCount / pageSize));
+				setAllCourses(data.ratedCourses);
+				setTotalPages(data.totalPages);
 				setLoading(false);
 			} catch (error) {
 				log("Error fetching courses", error);
@@ -32,9 +30,14 @@ export default function AllCoursesPage() {
 			}
 		}
 		fetchCourses();
-	}, [page, pageSize]);
+	}, [page, location]);
 
 	const handlePageChange = (newPage) => {
+		const queryParams = new URLSearchParams(location.search);
+		queryParams.set("page", newPage);
+
+		navigate(`?${queryParams.toString()}`);
+
 		setPage(newPage);
 	};
 

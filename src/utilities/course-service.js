@@ -1,8 +1,23 @@
+import { averageRating } from "../helper/coursesHelper";
 import * as courseAPI from "./course-api";
+import debug from "debug";
+
+const log = debug("fincademy:courseService");
 
 export async function createCourse(courseData) {
 	const content = await courseAPI.createCourse(courseData);
 	return content;
+}
+
+export async function getCourses(queryParams) {
+	const page = queryParams.get("page") || 1;
+	const pageSize = queryParams.get("pageSize") || 8;
+	const params = { page, pageSize };
+	const data = await courseAPI.getCourses(params);
+	const totalPages = Math.ceil(data.totalCount / pageSize);
+	const ratedCourses = averageRating(data.allCourses);
+
+	return { ratedCourses, totalPages };
 }
 
 export async function getOneCourse(courseId) {

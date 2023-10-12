@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import * as courseService from "../../utilities/course-service";
-import { Button, Container, Row, Col } from "react-bootstrap";
+import { Button, Container, Row, Col, Spinner } from "react-bootstrap";
 import debug from "debug";
 import ReactMarkdown from "react-markdown";
 
@@ -10,6 +10,7 @@ const log = debug("fincademy:CourseContentPage:CourseContentPage");
 export default function CourseContentPage({ user }) {
   const [course, setCourse] = useState({});
   const { courseId } = useParams();
+  const [loading, setLoading] = useState(true)
   const userCourses = user.enrolledCourses;
   const index = userCourses.findIndex(
     (userCourse) => userCourse.course._id === courseId
@@ -20,8 +21,10 @@ export default function CourseContentPage({ user }) {
       try {
         const data = await courseService.getCourseContent(courseId);
         setCourse(data);
+        setLoading(false);
       } catch (error) {
         console.log(error);
+        setLoading(false);
       }
     };
     fetchContent();
@@ -30,6 +33,16 @@ export default function CourseContentPage({ user }) {
   const parsedContent = course.content
     ? course.content.replace(/\\n/g, "\n")
     : "";
+
+  if (loading) {
+    return (
+      <Container className="d-flex justify-content-center vh-100">
+        <Spinner animation="border" variant="success" role="status">
+          <span className="visually-hidden">Loading...</span>
+        </Spinner>
+      </Container>
+    );
+	}
 
   return (
     <Container className="mt-4" style={{ maxWidth: "63%" }}>

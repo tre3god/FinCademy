@@ -41,6 +41,7 @@ export default function CourseCreatePage() {
 						required
 					/>
 				</Form.Group>
+				<br />
 				<Form.Group controlId="shortDescription">
 					<Form.Label>Short Description</Form.Label>
 					<Form.Control
@@ -52,6 +53,7 @@ export default function CourseCreatePage() {
 						required
 					/>
 				</Form.Group>
+				<br />
 				<Form.Group controlId="longDescription">
 					<Form.Label>Long Description</Form.Label>
 					<Form.Control
@@ -63,6 +65,7 @@ export default function CourseCreatePage() {
 						required
 					/>
 				</Form.Group>
+				<br />
 				<Form.Group controlId="content">
 					<Form.Label>Course Content (Markdown)</Form.Label>
 					<Form.Control
@@ -77,6 +80,7 @@ export default function CourseCreatePage() {
 				<div className="markdown-preview">
 					<ReactMarkdown>{courseData.content}</ReactMarkdown>
 				</div>
+				<br />
 				<Form.Group controlId="price">
 					<Form.Label>Price</Form.Label>
 					<Form.Control
@@ -88,8 +92,9 @@ export default function CourseCreatePage() {
 						min="0"
 					/>
 				</Form.Group>
+				<br />
 				<Form.Group controlId="img">
-					<Form.Label>Course Title</Form.Label>
+					<Form.Label>Course Img URL</Form.Label>
 					<Form.Control
 						type="text"
 						name="img"
@@ -97,6 +102,7 @@ export default function CourseCreatePage() {
 						onChange={handleChange}
 					/>
 				</Form.Group>
+				<br />
 				<Button variant="primary" type="submit">
 					Create Course
 				</Button>

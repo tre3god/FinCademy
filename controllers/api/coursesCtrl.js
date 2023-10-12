@@ -13,8 +13,15 @@ async function createCourse(req, res) {
 
 async function getAllCourses(req, res) {
 	try {
-		const allCourses = await Course.find();
-		res.status(200).json({ allCourses });
+		const page = req.query.page || 1;
+		const pageSize = req.query.pageSize || 8;
+
+		const skip = (page - 1) * pageSize;
+
+		const allCourses = await Course.find().skip(skip).limit(pageSize);
+		const totalCount = await Course.countDocuments();
+
+		res.status(200).json({ allCourses, totalCount });
 	} catch (error) {
 		res.status(500).json({ error });
 	}

@@ -64,17 +64,29 @@ Jump into the financial literacy e-learning world of FinCademy [here](https://fi
 ## Usage
 
 1. Arrive at the landing page of FinCademy.
-2. Browse courses freely without an account
-3. Register or login to FinCademy to enroll or pick up where you left off.
-4. Explore the list of available courses, you can sort by the highest rated course or alphabetical order.
-5. Click on each course for more details.
-6. Enroll in a course.
-7. Commence learning via your student profile page.
-8. Attempt a quiz to assess your knowledge.
-9. Review courses and read others' feedback.
-10. Edit your review if you changed your mind about the course.
-11. Create your own course and quiz if you dont find anything suitable.
+<img width="1057" alt="Screenshot 2023-10-13 at 1 55 27 AM" src="https://github.com/tre3god/FinCademy/assets/124702698/2d9a5c26-6097-4e08-9fca-2b37d277174b">
+2. Click on "Courses" to browse courses freely without an account. <br/>
+3. Simply click on "Sign Up" if you wish to enroll in a course or login to pick up where you left off.</br>
+4. When exploring the list of available courses, you may wish to sort by the highest rated course, alphabetical order or the the number of results in a page.
+<img width="1034" alt="Screenshot 2023-10-13 at 2 11 19 AM" src="https://github.com/tre3god/FinCademy/assets/124702698/5a460c8d-536a-49ef-9ee3-0d63d88e4868">
+5. Click the "Read More" button on each course for more details. Remember, you must be signed in!<br/>
+6. In the course information page, you can learn more about the course through the description or read what other learners had to say about the course. Once you're ready, click on "Enroll" to... you guessed it, enroll in a course. Simple!
+<img width="989" alt="Screenshot 2023-10-13 at 2 07 45 AM" src="https://github.com/tre3god/FinCademy/assets/124702698/c4983b69-9c38-4cde-8623-49ca66d945a8"> <br/>
+7. Once enrolled, you will be redirected to your profile and dashboard, click on the course title to begin your learning journey or unenroll if the course no longer interests you.
+<img width="1074" alt="Screenshot 2023-10-13 at 1 59 16 AM" src="https://github.com/tre3god/FinCademy/assets/124702698/ea7d7e70-3cd4-4849-ba4c-958ad44e440d">
+8. The course content page is where you find your course materials. Pro tip: Read through the materials careful before you attempt the quiz at the end to assess your knowledge.
+<img width="1074" alt="Screenshot 2023-10-13 at 1 59 16 AM" src="https://github.com/tre3god/FinCademy/assets/124702698/df7f0081-d9ba-41ca-9687-71f4203483be">
 
+9. You can attempt the quiz as many times as you like and you'll need to complete at least 1 quiz in order to leave a review.<br/>
+10. Your dashboard should show you an option to leave a review once you've completed a quiz. Go ahead, share your thoughts!.
+<img width="1074" alt="Screenshot 2023-10-13 at 2 22 46 AM" src="https://github.com/tre3god/FinCademy/assets/124702698/4e80951b-7cd2-4bfd-acb5-1db9f2502f72">
+11. Changed your mind about something you said about a course? Fret not, just click on the blue "Review" button again to make your edits!
+12. If the courses aren't really to your liking or if the quizzes were too simple, you could try to create them! You can create courses by clicking on "Courses" on the nav bar and click "Create a Course".
+<img width="1074" alt="Screenshot 2023-10-13 at 2 26 50 AM" src="https://github.com/tre3god/FinCademy/assets/124702698/e525ba06-aea6-40c1-9477-70d529f3519f">
+13. Fill the form to create your very own course! Do note that contents should be in markdown string! <br/>
+14. If you wish to upload a photo that embodies your course, just upload your picture onto a image hosting platform like Imgur and copy the URL.<br/>
+15. Don't forget to create a quiz too - located at the foot of your course content page. This encourages other users to read through your content carefully. <br/>
+16. Congratulations! You've created your first course on FinCademy! If your content is good, students will be flocking to your course.
 ---
 
 ## Future Developments

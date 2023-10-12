@@ -34,7 +34,7 @@ Financial literacy is more crucial than ever in today's fast-paced world. FinCad
 
 - **ERD**: The team also did up the Entity Relationship Diagram ([ERD](https://lucid.app/lucidchart/09dc7bdd-520f-41d8-9312-5ef9105101a9/edit?invitationId=inv_15befe1e-5c87-4bfa-aa0c-c912bd6210fc&referringApp=slack&page=0_0#)) for the various models that we intended to have from the start.
 
-![Model databases - Page 1 whiteBG](https://github.com/tre3god/FinCademy/assets/124702698/18cb57b1-29df-4793-a6fd-efe58d052d69)
+![Screenshot 2023-10-12 at 11 53 10 PM](https://github.com/tre3god/FinCademy/assets/124702698/90a702d9-38ce-4801-aecb-f65cef6cf749)
 
 ## Features
 

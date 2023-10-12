@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import * as courseService from "../../utilities/course-service";
-import { Button, Col, Row, Container } from "react-bootstrap";
+import { Button, Col, Row, Container, Spinner } from "react-bootstrap";
 import debug from "debug";
 import ReviewsHistory from "../../components/Reviews/ReviewsHistory";
 import { enrollCourse } from "../../utilities/users-service";
@@ -11,6 +11,7 @@ const log = debug("fincademy:CoursesPage:CourseInfoPage");
 export default function CourseInfoPage({ user, setUser }) {
 	const [course, setCourse] = useState({});
 	const { courseId } = useParams();
+	const [loading, setLoading] = useState(true)
 	const navigate = useNavigate();
 
 	useEffect(() => {
@@ -19,9 +20,11 @@ export default function CourseInfoPage({ user, setUser }) {
 				const data = await courseService.getOneCourse(courseId);
 				const { oneCourse } = data;
 				setCourse(oneCourse);
+				setLoading(false);
 				log(oneCourse);
 			} catch (error) {
 				console.log(error);
+				setLoading(false);
 			}
 		};
 		fetchContent();
@@ -32,6 +35,16 @@ export default function CourseInfoPage({ user, setUser }) {
 		setUser(updatedUser);
 		navigate("/profile");
 	};
+
+	if (loading) {
+		return (
+      <Container className="d-flex justify-content-center vh-100">
+        <Spinner animation="border" variant="success" role="status">
+          <span className="visually-hidden">Loading...</span>
+        </Spinner>
+      </Container>
+    );
+		}
 
 	return (
 		<Container>

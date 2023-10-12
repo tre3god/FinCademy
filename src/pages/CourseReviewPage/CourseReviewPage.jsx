@@ -59,79 +59,80 @@ export default function CourseReviewPage({ user }) {
 	}
 
 	return (
-		<>
-			{userLeftReview ? (
-				<>
-					<h2>Your Review for {course.courseTitle}</h2>
-					<Form>
-						<Form.Group controlId="displayUsername">
-							<Form.Label>Username:</Form.Label>
-							<Form.Control type="text" value={username} readOnly />
-						</Form.Group>
-						<br />
-						<Form.Group controlId="reviewText">
-							<Form.Label>Your Review</Form.Label>
-							<Form.Control
-								as="textarea"
-								rows={3}
-								placeholder={userLeftReview.comments}
-								readOnly
-							/>
-						</Form.Group>
-						<Form.Group controlId="rating">
-							<Form.Label>Rating</Form.Label>
-							<Rating name="rating" value={userLeftReview.rating} readOnly />
-						</Form.Group>
-						<Button
-							variant="secondary"
-							className="me-2"
-							onClick={() => navigate("/profile")}>
-							Back to Profile
-						</Button>
-						<Button variant="primary" onClick={() => setIsEditModalOpen(true)}>
-							Edit Review
-						</Button>
-						<EditReviewModal
-							show={isEditModalOpen}
-							onHide={() => setIsEditModalOpen(false)}
-							review={userLeftReview}
-							courseId={courseId}
-						/>
-					</Form>
-				</>
-			) : (
-				<>
-					<h2>Review for {course.courseTitle}</h2>
-					<Form onSubmit={handleSubmit}>
-						<Form.Group controlId="displayUsername">
-							<Form.Label>Username:</Form.Label>
-							<Form.Control type="text" value={username} readOnly />
-						</Form.Group>
-						<br />
-						<Form.Group controlId="reviewText">
-							<Form.Label>Leave a Review</Form.Label>
-							<Form.Control
-								as="textarea"
-								rows={3}
-								placeholder="Write your review here"
-							/>
-						</Form.Group>
-						<Form.Group controlId="rating">
-							<Form.Label>Rating</Form.Label>
-							<Rating
-								name="rating"
-								value={rating}
-								onChange={(_, newValue) => {
-									setRating(newValue);
-								}}
-							/>
-						</Form.Group>
-						<Button variant="primary" type="submit">
-							Submit Review
-						</Button>
-					</Form>
-				</>
-			)}
-		</>
-	);
+    <Container className="my-5">
+      {userLeftReview ? (
+        <>
+          <h2>Your Review for {course.courseTitle}</h2>
+          <Form>
+            <Form.Group controlId="displayUsername">
+              <Form.Label>Username:</Form.Label>
+              <Form.Control type="text" value={username} readOnly />
+            </Form.Group>
+            <br />
+            <Form.Group controlId="reviewText">
+              <Form.Label>Your Review</Form.Label>
+              <Form.Control
+                as="textarea"
+                rows={3}
+                placeholder={userLeftReview.comments}
+                readOnly
+              />
+            </Form.Group>
+            <Form.Group controlId="rating">
+              <Form.Label>Rating</Form.Label>
+              <Rating name="rating" value={userLeftReview.rating} readOnly />
+            </Form.Group>
+            <Button
+              variant="secondary"
+              className="me-2"
+              onClick={() => navigate("/profile")}
+            >
+              Back to Profile
+            </Button>
+            <Button variant="primary" onClick={() => setIsEditModalOpen(true)}>
+              Edit Review
+            </Button>
+            <EditReviewModal
+              show={isEditModalOpen}
+              onHide={() => setIsEditModalOpen(false)}
+              review={userLeftReview}
+              courseId={courseId}
+            />
+          </Form>
+        </>
+      ) : (
+        <>
+          <h2>Review for {course.courseTitle}</h2>
+          <Form onSubmit={handleSubmit}>
+            <Form.Group controlId="displayUsername">
+              <Form.Label>Username:</Form.Label>
+              <Form.Control type="text" value={username} readOnly />
+            </Form.Group>
+            <br />
+            <Form.Group controlId="reviewText">
+              <Form.Label>Leave a Review</Form.Label>
+              <Form.Control
+                as="textarea"
+                rows={3}
+                placeholder="Write your review here"
+              />
+            </Form.Group>
+            <Form.Group controlId="rating">
+              <Form.Label>Rating</Form.Label>
+              <Rating
+                name="rating"
+                value={rating}
+                onChange={(_, newValue) => {
+                  setRating(newValue);
+                }}
+              />
+            </Form.Group>
+            <Button variant="primary" type="submit">
+              Submit Review
+            </Button>
+          </Form>
+        </>
+      )}
+    </Container>
+  );
 }

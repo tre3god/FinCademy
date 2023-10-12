@@ -7,7 +7,7 @@ export function createCourse(courseData) {
 
 export function getCourses(params) {
 	return sendRequest(
-		`${BASE_URL}?page=${params.page}&pageSize=${params.pageSize}`,
+		`${BASE_URL}?page=${params.page}&pageSize=${params.pageSize}&sortBy=${params.sortBy}`,
 	);
 }
 

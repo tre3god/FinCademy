@@ -60,11 +60,15 @@ export default function CourseContentPage({ user }) {
         <Col className="text-center d-flex justify-content-center">
           {" "}
           {/* Added d-flex and justify-content-center */}
+          <Link to={"/profile"}>
+            <Button variant="secondary">Back to Profile</Button>
+          </Link>
+          &nbsp;
           <Link to={`/quiz/${courseId}`}>
             {userCourses[index]?.quizScore === null ? (
               <Button variant="success">Take the quiz now!</Button>
             ) : (
-              <Button variant="success">Try the quiz again!</Button>
+              <Button variant="warning">Try the quiz again!</Button>
             )}
           </Link>
         </Col>

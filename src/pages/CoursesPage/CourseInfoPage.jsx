@@ -83,13 +83,16 @@ export default function CourseInfoPage({ user, setUser }) {
 			</Row>
 			{user ? (
 				<Row className="justify-content-center">
-					<Button className="col-md-5" onClick={handleEnroll}>
+					<Button variant="success" className="col-md-5" onClick={handleEnroll}>
 						Enroll
 					</Button>
 				</Row>
 			) : (
 				<Row className="justify-content-center">
-					<Button className="col-md-5" onClick={() => navigate("/login")}>
+					<Button
+						variant="warning"
+						className="col-md-5"
+						onClick={() => navigate("/login")}>
 						Login to Enroll
 					</Button>
 				</Row>

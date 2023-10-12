@@ -13,6 +13,7 @@ import CourseContentPage from "../CourseContentPage/CourseContentPage";
 import QuizPage from "../QuizPage/QuizPage";
 import "./App.css";
 import CourseReviewPage from "../CourseReviewPage/CourseReviewPage";
+import CourseCreatePage from "../CoursesPage/CourseCreatePage";
 
 const log = debug("fincademy:src:App");
 localStorage.debug = "fincademy:*";
@@ -20,13 +21,12 @@ localStorage.debug = "fincademy:*";
 log("Start app");
 
 export default function App() {
-
 	// get state from session storage, if dont have then go get token
 	const [user, setUser] = useState(() => {
 		const storedUser = window.sessionStorage.getItem("user");
 		return storedUser ? JSON.parse(storedUser) : getUser();
 	});
-	
+
 	const updateUser = (user) => {
 		setUser(user);
 	};
@@ -46,6 +46,7 @@ export default function App() {
 						<Routes>
 							<Route path="/" element={<TempLandingPage />} />
 							<Route path="/courses" element={<AllCoursesPage />} />
+							<Route path="courses/create" element={<CourseCreatePage />} />
 							<Route
 								path="/courses/:courseId"
 								element={<CourseInfoPage user={user} setUser={updateUser} />}

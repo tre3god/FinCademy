@@ -24,7 +24,7 @@ export default function CourseCard({ course }) {
 				<Button
 					variant="outline-success"
 					onClick={() => navigate(`/courses/${course._id}`)}>
-					Read Course Content
+					Read More
 				</Button>
 			</Card.Footer>
 		</Card>

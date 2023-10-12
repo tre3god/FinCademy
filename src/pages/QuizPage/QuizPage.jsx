@@ -56,7 +56,8 @@ export default function QuizPage() {
 
   const handleExit = async (event) => {
     event.preventDefault();
-    await usersService.updateQuizScore(score, courseId);
+    const quizScore = `${score}/${quiz.length}`;
+    await usersService.updateQuizScore(quizScore, courseId);
     navigate("/profile");
   };
 

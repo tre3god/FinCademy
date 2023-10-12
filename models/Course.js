@@ -11,7 +11,6 @@ const reviewSchema = new Schema(
 );
 
 const courseSchema = new Schema(
-
 	{
 		courseTitle: { type: String, required: true },
 		shortDescription: { type: String, required: true },
@@ -19,7 +18,6 @@ const courseSchema = new Schema(
 		content: { type: String },
 		price: { type: Number, required: true },
 		reviews: [reviewSchema],
-		source: String,
 		img: String,
 	},
 	{

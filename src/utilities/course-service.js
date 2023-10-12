@@ -12,7 +12,8 @@ export async function createCourse(courseData) {
 export async function getCourses(queryParams) {
 	const page = queryParams.get("page") || 1;
 	const pageSize = queryParams.get("pageSize") || 8;
-	const params = { page, pageSize };
+	const sortBy = queryParams.get("sortBy") || "default";
+	const params = { page, pageSize, sortBy };
 	const data = await courseAPI.getCourses(params);
 	const totalPages = Math.ceil(data.totalCount / pageSize);
 	const ratedCourses = averageRating(data.allCourses);

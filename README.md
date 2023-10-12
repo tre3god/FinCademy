@@ -66,7 +66,7 @@ Jump into the financial literacy e-learning world of FinCademy [here](https://fi
 1. Arrive at the landing page of FinCademy.
 2. Browse courses freely without an account
 3. Register or login to FinCademy to enroll or pick up where you left off.
-4. Explore the list of available courses, you can sort by the highest rated course.
+4. Explore the list of available courses, you can sort by the highest rated course or alphabetical order.
 5. Click on each course for more details.
 6. Enroll in a course.
 7. Commence learning via your student profile page.

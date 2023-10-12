@@ -1,9 +1,10 @@
 import CourseCard from "../../components/CourseCard/CourseCard";
 import { useState, useEffect } from "react";
-import { Col, Row, Container } from "react-bootstrap";
+import { Col, Row, Container, Spinner } from "react-bootstrap";
 
 export default function AllCoursesPage() {
 	const [allCourses, setAllCourses] = useState([]);
+	const [loading, setLoading] = useState(true)
 
 	useEffect(() => {
 		async function fetchCourses() {
@@ -11,12 +12,16 @@ export default function AllCoursesPage() {
 				const res = await fetch("/api/courses");
 				const data = await res.json();
 				setAllCourses(data.allCourses);
+				setLoading(false);
 			} catch (error) {
 				console.log("Error fetching courses", error);
+				setLoading(false);
 			}
 		}
 		fetchCourses();
 	}, []);
+
+
 
 	allCourses.forEach((course) => {
 		const sumOfRatings = course.reviews.reduce(
@@ -38,6 +43,17 @@ export default function AllCoursesPage() {
 		}
 		return 0;
 	});
+
+	if (loading) {
+	return (
+      <Container className="d-flex justify-content-center vh-100">
+        <Spinner animation="border" variant="success" role="status">
+          <span className="visually-hidden">Loading...</span>
+        </Spinner>
+      </Container>
+    );
+	}
+
 
 	return (
 		<>

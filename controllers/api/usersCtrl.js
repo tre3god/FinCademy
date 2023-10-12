@@ -66,7 +66,7 @@ const updateQuizScore = async (req, res) => {
 		const index = courses.findIndex(
 			(course) => course.course.toString() === req.params.courseId,
 		);
-		courses[index].quizScore = parseInt(req.body.quizScore);
+		courses[index].quizScore = req.body.quizScore;
 		await user.save(); // an array
 		// const newQuizScore = await courses.findByIdAndUpdate({course: req.params.courseId}, {quizScore: req.body});
 		res.status(200).json({ courses });

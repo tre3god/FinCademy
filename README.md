@@ -29,9 +29,9 @@ Financial literacy is more crucial than ever in today's fast-paced world. FinCad
 
 <img width="16384" alt="Project 3 - E-Learning Platform for Financial Literacy" src="https://github.com/tre3god/FinCademy/assets/124702698/1c0cc813-5f7b-4ff4-9caf-a47baf32a721">
 
-- **ERD**: The team also did up the [Entity Relationship Diagrams](https://lucid.app/lucidchart/09dc7bdd-520f-41d8-9312-5ef9105101a9/edit?invitationId=inv_15befe1e-5c87-4bfa-aa0c-c912bd6210fc&referringApp=slack&page=0_0#) for the various models that we intended to have from the start. [Placeholder data and models](https://docs.google.com/spreadsheets/d/1gra9SOT4H9hnbW0CrkVt6Pw95Psl-sN5Q52LE_Q5YX8/edit#gid=762001014) were also generated on Google sheets for the purposes of pitching our project.
+- **ERD**: The team also did up the Entity Relationship Diagram ([ERD](https://lucid.app/lucidchart/09dc7bdd-520f-41d8-9312-5ef9105101a9/edit?invitationId=inv_15befe1e-5c87-4bfa-aa0c-c912bd6210fc&referringApp=slack&page=0_0#)) for the various models that we intended to have from the start.
 
-- **Pitch Deck**: The entire idea was then pitched to our course instructor, using this [Pitch Deck](https://docs.google.com/presentation/d/1LGYF6woeVfOccvw7YVxU0RyAnfG7s322frx_3iul1Hg/edit#slide=id.p). The project was then green-lit but some components of the initial idea (to have instructors, course creation, etc.) had to be temporarily shelved in view of the timeline provided to complete the MVP for the project.
+![Model databases - Page 1 whiteBG](https://github.com/tre3god/FinCademy/assets/124702698/18cb57b1-29df-4793-a6fd-efe58d052d69)
 
 ## Features
 
@@ -48,7 +48,7 @@ Financial literacy is more crucial than ever in today's fast-paced world. FinCad
 - **Frontend**: ReactJS, React-Bootstrap
 - **Backend**: Node.js, Express, Mongoose
 - **Database**: MongoDB
-- **Others**: JWT for authentication, Markdown for course content,
+- **Others**: JWT for authentication, Markdown for course content
 
 ---
 
@@ -61,13 +61,16 @@ Jump into the financial literacy e-learning world of FinCademy [here](https://fi
 ## Usage
 
 1. Arrive at the landing page of FinCademy.
-2. Register or login to FinCademy.
-3. Explore the list of available courses.
-4. Click on each course for more details.
-5. Enroll in a course.
-6. Commence learning via your student profile page.
-7. Attempt a quiz to assess your knowledge.
-8. Review courses and read others' feedback.
+2. Browse courses freely without an account
+3. Register or login to FinCademy to enroll or pick up where you left off.
+4. Explore the list of available courses, you can sort by the highest rated course.
+5. Click on each course for more details.
+6. Enroll in a course.
+7. Commence learning via your student profile page.
+8. Attempt a quiz to assess your knowledge.
+9. Review courses and read others' feedback.
+10. Edit your review if you changed your mind about the course.
+11. Create your own course and quiz if you dont find anything suitable.
 
 ---
 

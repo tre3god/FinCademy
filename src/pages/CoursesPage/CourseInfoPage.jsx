@@ -73,14 +73,7 @@ export default function CourseInfoPage({ user, setUser }) {
 					<div className="p-2">Course Price: ${course.price}</div>
 				</Col>
 			</Row>
-			<Row>
-				<Col>
-					<h3>Reviews</h3>
-					{course.reviews?.map((review) => (
-						<ReviewsHistory key={review._id} review={review} />
-					))}
-				</Col>
-			</Row>
+			
 			{user ? (
 				<Row className="justify-content-center">
 					<Button variant="success" className="col-md-5" onClick={handleEnroll}>
@@ -97,6 +90,14 @@ export default function CourseInfoPage({ user, setUser }) {
 					</Button>
 				</Row>
 			)}
+			<Row>
+				<Col>
+					<h3>Reviews</h3>
+					{course.reviews?.map((review) => (
+						<ReviewsHistory key={review._id} review={review} />
+					))}
+				</Col>
+			</Row>
 		</Container>
 	);
 }

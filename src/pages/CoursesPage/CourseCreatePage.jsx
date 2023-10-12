@@ -10,6 +10,7 @@ export default function CourseCreatePage() {
 		longDescription: "",
 		content: "",
 		price: 0,
+		img: "",
 	});
 	const [error, setError] = useState("");
 
@@ -85,6 +86,15 @@ export default function CourseCreatePage() {
 						onChange={handleChange}
 						required
 						min="0"
+					/>
+				</Form.Group>
+				<Form.Group controlId="img">
+					<Form.Label>Course Title</Form.Label>
+					<Form.Control
+						type="text"
+						name="img"
+						value={courseData.img}
+						onChange={handleChange}
 					/>
 				</Form.Group>
 				<Button variant="primary" type="submit">

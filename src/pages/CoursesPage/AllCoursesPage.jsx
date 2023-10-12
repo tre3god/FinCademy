@@ -4,6 +4,7 @@ import { Col, Row, Container, Spinner, Pagination } from "react-bootstrap";
 import debug from "debug";
 import { useLocation, useNavigate } from "react-router-dom";
 import { getCourses } from "../../utilities/course-service";
+import CourseNavBar from "../../components/NavBar/CourseNavBar";
 
 const log = debug("fincademy:AllCoursesPage");
 
@@ -13,7 +14,6 @@ export default function AllCoursesPage() {
 	const [allCourses, setAllCourses] = useState([]);
 	const [loading, setLoading] = useState(true);
 	const [page, setPage] = useState(1);
-	const [totalPages, setTotalPages] = useState(1);
 
 	useEffect(() => {
 		async function fetchCourses() {
@@ -21,8 +21,7 @@ export default function AllCoursesPage() {
 				const queryParams = new URLSearchParams(location.search);
 				const data = await getCourses(queryParams);
 				log(data);
-				setAllCourses(data.ratedCourses);
-				setTotalPages(data.totalPages);
+				setAllCourses(data);
 				setLoading(false);
 			} catch (error) {
 				log("Error fetching courses", error);
@@ -31,6 +30,18 @@ export default function AllCoursesPage() {
 		}
 		fetchCourses();
 	}, [page, location]);
+
+	const handlePageSizeChange = (value) => {
+		const queryParams = new URLSearchParams(location.search);
+		queryParams.set("pageSize", value);
+		navigate(`?${queryParams.toString()}`);
+	};
+
+	const handleSortChange = (sortOption) => {
+		const queryParams = new URLSearchParams(location.search);
+		queryParams.set("sortBy", sortOption);
+		navigate(`?${queryParams.toString()}`);
+	};
 
 	const handlePageChange = (newPage) => {
 		const queryParams = new URLSearchParams(location.search);
@@ -53,11 +64,15 @@ export default function AllCoursesPage() {
 
 	return (
 		<>
+			<CourseNavBar
+				handlePageSizeChange={handlePageSizeChange}
+				handleSortChange={handleSortChange}
+			/>
 			<Container
 				className="d-flex align-items-center justify-content-center"
 				style={{ minHeight: "100vh" }}>
 				<Row className="justify-content-md-center">
-					{allCourses.map((course, index) => {
+					{allCourses.ratedCourses?.map((course, index) => {
 						return (
 							<Col key={index} xs={12} sm={6} md={4} lg={3}>
 								<CourseCard course={course} />
@@ -71,7 +86,7 @@ export default function AllCoursesPage() {
 					onClick={() => handlePageChange(page - 1)}
 					disabled={page === 1}
 				/>
-				{Array.from({ length: totalPages }).map((_, index) => (
+				{Array.from({ length: allCourses.totalPages || 1 }).map((_, index) => (
 					<Pagination.Item
 						key={index + 1}
 						active={index + 1 === page}
@@ -81,7 +96,7 @@ export default function AllCoursesPage() {
 				))}
 				<Pagination.Next
 					onClick={() => handlePageChange(page + 1)}
-					disabled={page === totalPages}
+					disabled={page === allCourses.totalPages}
 				/>
 			</Pagination>
 		</>

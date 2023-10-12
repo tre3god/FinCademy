@@ -22,7 +22,12 @@ Financial literacy is more crucial than ever in today's fast-paced world. FinCad
 
 - **Trello Board**: The team listed out various user stories for the e-learning platform on the [Trello board](https://trello.com/b/dUDCGMn6/project-3). The user stories are sorted out into the MVP as well the Icebox. As progress was made on the e-learning platform, the user stories were sorted into their right locations respectively (WIP/completed).
 
+<img width="1421" alt="Screenshot 2023-10-12 at 6 01 19 PM" src="https://github.com/tre3god/FinCademy/assets/124702698/1cb95199-ae68-46a5-97aa-9a573f255b7b">
+
+
 - **Wireframe**: Based on the user stories which were listed out by the team, the team then created a [Figma wireframe](https://www.figma.com/file/6gmkSZuAMDI25RBv8hmiaE/Project-3---E-Learning-Platform-for-Financial-Literacy?type=whiteboard&node-id=0-1&t=5eElqKAEfjk6i8ll-0) to conceptualise how the FinCademy website would look like. During the creation of the website, several changes were made to the design but the wireframe served as a useful guide for the foundation that needed to be built.
+
+<img width="16384" alt="Project 3 - E-Learning Platform for Financial Literacy" src="https://github.com/tre3god/FinCademy/assets/124702698/1c0cc813-5f7b-4ff4-9caf-a47baf32a721">
 
 - **ERD**: The team also did up the [Entity Relationship Diagrams](https://lucid.app/lucidchart/09dc7bdd-520f-41d8-9312-5ef9105101a9/edit?invitationId=inv_15befe1e-5c87-4bfa-aa0c-c912bd6210fc&referringApp=slack&page=0_0#) for the various models that we intended to have from the start. [Placeholder data and models](https://docs.google.com/spreadsheets/d/1gra9SOT4H9hnbW0CrkVt6Pw95Psl-sN5Q52LE_Q5YX8/edit#gid=762001014) were also generated on Google sheets for the purposes of pitching our project.
 
@@ -43,7 +48,7 @@ Financial literacy is more crucial than ever in today's fast-paced world. FinCad
 - **Frontend**: ReactJS, React-Bootstrap
 - **Backend**: Node.js, Express, Mongoose
 - **Database**: MongoDB
-- **Others**: JWT for authentication, Markdown for course content
+- **Others**: JWT for authentication, Markdown for course content,
 
 ---
 
@@ -68,8 +73,6 @@ Jump into the financial literacy e-learning world of FinCademy [here](https://fi
 
 ## Future Developments
 
-- **Different types of users**: Course creators which can use the platform to create and market their own courses.
-
-- **Course creation template**: For course creators to easily create their own courses to be put on the e-learning platform.
+- **Different types of users**: Course creation will only be available to registered creators which they can use the platform to materialize and market their own courses.
 
 - **Subscription payments**: Upon expressing their desire to enrol for a course, students will be re-directed to make payment for the course. On the other end, course creators will be able to generate revenue from their courses.

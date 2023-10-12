@@ -48,14 +48,19 @@ export default function StudentProfile({ user, setUser }) {
 
 	return (
 		<Container className="mt-5">
-			<h1>Welcome, {user.name}!</h1>
-			<h2>Email: {user.email}</h2>
-			<h3>Below are your enrolled courses</h3>
+			<div className='p-5 text-center bg-light'>
+			<h1 className='mb-3'>Welcome, {user.name}!</h1>
+			<br></br>
+			<h3 className="mb-3">Email: {user.email}</h3>
+			</div>
+			<br></br>
+			<h3 className="text-center">Below are your enrolled courses</h3>
+			<br></br>
 			{user.enrolledCourses?.map((course, index) => (
-				<div key={index} className="mb-2">
+				<div key={index} className="mb-2 text-center">
 					<Row>
 						<Col sm={1}>{index + 1}.</Col>
-						<Col sm={3}>
+						<Col sm={5}>
 							<Link to={`/courses/${course.course._id}/content`}>
 								{course.course.courseTitle}
 							</Link>
@@ -63,7 +68,7 @@ export default function StudentProfile({ user, setUser }) {
 
 						{course.quizScore === null ? (
 							<>
-								<Col sm={5}>Complete the Course & Quiz to leave a Review</Col>
+								<Col sm={4}>Complete the Course & Quiz to leave a Review</Col>
 							</>
 						) : (
 							<>
@@ -76,7 +81,7 @@ export default function StudentProfile({ user, setUser }) {
 							</>
 						)}
 
-						<Col sm={2}>
+						<Col sm={1}>
 							<Button
 								variant="danger"
 								onClick={handleUnsub}

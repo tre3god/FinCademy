@@ -48,10 +48,10 @@ export default function StudentProfile({ user, setUser }) {
 
 	return (
 		<Container className="mt-5">
-			<div className='p-5 text-center bg-light'>
-			<h1 className='mb-3'>Welcome, {user.name}!</h1>
-			<br></br>
-			<h3 className="mb-3">Email: {user.email}</h3>
+			<div className="p-5 text-center bg-light">
+				<h1 className="mb-3">Welcome, {user.name}!</h1>
+				<br></br>
+				<h3 className="mb-3">Email: {user.email}</h3>
 			</div>
 			<br></br>
 			<h3 className="text-center">Below are your enrolled courses</h3>
@@ -72,7 +72,7 @@ export default function StudentProfile({ user, setUser }) {
 							</>
 						) : (
 							<>
-								<Col sm={4}>Quiz score: {course.quizScore}/5</Col>
+								<Col sm={4}>Quiz score: {course.quizScore}</Col>
 								<Col sm={1}>
 									<Link to={`/courses/${course.course._id}/review`}>
 										<Button variant="primary">Review</Button>

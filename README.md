@@ -1,3 +1,6 @@
+
+![fincademy_logo3](https://github.com/tre3god/FinCademy/assets/124702698/40bc3aa2-d4ae-4205-b03d-db187ff50cce)
+---
 # FinCademy - Financial Literacy E-Learning Platform 🎓💰
 
 ## Table of Contents

@@ -100,8 +100,9 @@ Experience the world of financial literacy e-learning at FinCademy [here](https:
 14. **To upload a course photo, use an image hosting platform like Imgur and copy the URL.**
 
 15. **Create a quiz—it's at the bottom of your course content page. This encourages users to read your content.**
+    ![Quiz Create Page](https://github.com/tre3god/FinCademy/assets/129886906/19d648d3-0d5e-4e97-9782-c7d18ae28bc6)
 
-16. **Congratulations! You've created your first course on FinCademy. If compelling, students will flock to your course.**
+17. **Congratulations! You've created your first course on FinCademy. If compelling, students will flock to your course.**
 ---
 
 ## Future Developments
